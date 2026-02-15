@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Great Room — Furniture Plan</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: #faf8f5;
+            color: #3a3028;
+            line-height: 1.6;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            background: #3a3028;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            z-index: 100;
+        }
+
+        nav .nav-container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav .brand {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #c1a97b;
+            text-decoration: none;
+        }
+
+        nav .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #faf8f5;
+            text-decoration: none;
+            padding-bottom: 3px;
+            border-bottom: 2px solid transparent;
+        }
+
+        nav a:hover {
+            border-bottom-color: #c1a97b;
+        }
+
+        nav a.active {
+            border-bottom-color: #c1a97b;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        h1 {
+            color: #5c3d2e;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            color: #5c3d2e;
+            font-size: 1.75rem;
+            margin: 2.5rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #c1a97b;
+        }
+
+        h3 {
+            color: #5c3d2e;
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .subtitle {
+            color: #c1a97b;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero {
+            margin-bottom: 3rem;
+        }
+
+        .brief {
+            background: #fef3e8;
+            border-left: 3px solid #d35400;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 4px;
+        }
+
+        .brief p {
+            margin: 0.5rem 0;
+        }
+
+        .zone-box {
+            background: #f5f0e8;
+            border-radius: 6px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .zone-box h3 {
+            color: #5c3d2e;
+            margin-bottom: 1rem;
+        }
+
+        .furniture-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid #e8e0d0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .card .tag {
+            display: inline-block;
+            background: #f5f0e8;
+            color: #5c3d2e;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .card h4 {
+            color: #5c3d2e;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card .dimensions {
+            color: #c1a97b;
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .card .price {
+            color: #5c3d2e;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin: 1rem 0 0.5rem;
+        }
+
+        .card a {
+            color: #c1a97b;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .card a:hover {
+            text-decoration: underline;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #e8e0d0;
+        }
+
+        thead {
+            background: #f5f0e8;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e8e0d0;
+        }
+
+        th {
+            color: #5c3d2e;
+            font-weight: 600;
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        tbody tr:hover {
+            background: #faf8f5;
+        }
+
+        .total-row {
+            font-weight: 600;
+            background: #f5f0e8 !important;
+        }
+
+        footer {
+            max-width: 900px;
+            margin: 4rem auto 2rem;
+            padding: 2rem;
+            text-align: center;
+            color: #c1a97b;
+            border-top: 1px solid #e8e0d0;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            nav .nav-container {
+                gap: 1rem;
+            }
+
+            nav .nav-links {
+                gap: 1rem;
+            }
+
+            main {
+                padding: 1rem;
+            }
+
+            table {
+                font-size: 0.9rem;
+            }
+
+            th, td {
+                padding: 0.75rem 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="brand">215 Aspen</a>
+            <div class="nav-links">
+                <a href="index.html">Overview</a>
+                <a href="great-room.html" class="active">Great Room</a>
+                <a href="bedroom.html">Bedroom</a>
+                <a href="exterior.html">Exterior</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <h1>Great Room — Furniture Plan</h1>
+            <p class="subtitle">832 sq ft · Open-Plan Living / Kitchen / Dining · Room & Board</p>
+        </section>
+
+        <h2>Design Brief</h2>
+        <div class="brief">
+            <p><strong>What stays:</strong> 1918 Steinway Model O piano, Persian/Heriz rugs, wall textiles, Chinese carved chest</p>
+            <p><strong>What goes:</strong> All existing furniture (pine/oak pieces)</p>
+            <p><strong>Palette:</strong> Walnut wood, oatmeal/warm gray upholstery, cognac/camel leather accents, matte black metal, White Dove walls (BM OC-17)</p>
+        </div>
+
+        <h2>5 Zones</h2>
+
+        <div class="zone-box">
+            <h3>Zone 1 — Living/Seating</h3>
+            <p>Jasper 86" sofa (Sunbrella, walnut legs), 3 Quinn chairs (performance fabric, walnut legs), Chilton 36" round coffee table (walnut), Hudson 60" media cabinet (walnut, natural steel)</p>
+        </div>
+
+        <div class="zone-box">
+            <h3>Zone 2 — Primary Dining + Workstation</h3>
+            <p>Adams Round Extension Table (48" → 84", walnut), 4 Afton side chairs (leather seat, walnut)</p>
+        </div>
+
+        <div class="zone-box">
+            <h3>Zone 3 — Piano</h3>
+            <p>Existing 1918 Steinway Model O. No new furniture. Area rug underneath.</p>
+        </div>
+
+        <div class="zone-box">
+            <h3>Zone 4 — Reading / Workstation 2</h3>
+            <p>Adams Drop-Leaf Table (26" → 42", walnut), 1 Afton side chair</p>
+        </div>
+
+        <div class="zone-box">
+            <h3>Zone 5 — Kitchen Counter</h3>
+            <p>3 Afton counter stools (walnut, leather seat)</p>
+        </div>
+
+        <h2>Furniture</h2>
+        <div class="furniture-grid">
+            <div class="card">
+                <span class="tag">Zone 1</span>
+                <h4>Jasper 86" Sofa</h4>
+                <p class="dimensions">86"W × 39"D × 32"H</p>
+                <p>Sunbrella performance fabric, walnut legs. Cleanable, durable, family-friendly.</p>
+                <p class="price">~$3,099</p>
+                <a href="https://www.roomandboard.com/catalog/living/sofas/jasper-sofa" target="_blank">View on Room & Board →</a>
+            </div>
+
+            <div class="card">
+                <span class="tag">Zone 1</span>
+                <h4>Quinn Chair × 3</h4>
+                <p class="dimensions">30"W × 33"D × 32"H</p>
+                <p>Performance fabric, walnut legs. Swivel base available. Matches bedroom chair.</p>
+                <p class="price">~$1,299 ea ($3,897 total)</p>
+                <a href="https://www.roomandboard.com/catalog/living/chairs/quinn-chair-and-ottoman" target="_blank">View on Room & Board →</a>
+            </div>
+
+            <div class="card">
+                <span class="tag">Zone 1</span>
+                <h4>Chilton 36" Round Coffee Table</h4>
+                <p class="dimensions">36" diameter × 15"H</p>
+                <p>Walnut top, matte black steel base. Low profile, generous surface.</p>
+                <p class="price">~$1,199</p>
+                <a href="https://www.roomandboard.com/catalog/living/coffee-tables/chilton-round-coffee-tables" target="_blank">View on Room & Board →</a>
+            </div>
+
+            <div class="card">
+                <span class="tag">Zone 1</span>
+                <h4>Hudson 60" Media Cabinet</h4>
+                <p class="dimensions">60"W × 18"D × 24"H</p>
+                <p>Walnut, natural steel base. Matches bedroom Hudson collection. 3 drawers + center compartment.</p>
+                <p class="price">~$3,499</p>
+                <a href="https://www.roomandboard.com/catalog/living/media-storage/hudson-media-cabinets" target="_blank">View on Room & Board →</a>
+            </div>
+
+            <div class="card">
+                <span class="tag">Zone 2</span>
+                <h4>Adams Round Extension Table</h4>
+                <p class="dimensions">48" → 84" diameter</p>
+                <p>Walnut. Expands with 2 leaves. Seats 4–8. American-made in Virginia.</p>
+                <p class="price">~$2,299</p>
+                <a href="https://www.roomandboard.com/catalog/dining/tables/adams-round-extension-tables" target="_blank">View on Room & Board →</a>
+            </div>
+
+            <div class="card">
+                <span class="tag">Zones 2, 4</span>
+                <h4>Afton Side Chair × 5</h4>
+                <p class="dimensions">18"W × 23"D × 35"H</p>
+                <p>Walnut frame, leather seat. Clean modern lines. 4 at dining, 1 at drop-leaf.</p>
+                <p class="price">~$499 ea ($2,495 total)</p>
+                <a href="https://www.roomandboard.com/catalog/dining/chairs/afton-side-chairs" target="_blank">View on Room & Board →</a>
+            </div>
+
+            <div class="card">
+                <span class="tag">Zone 4</span>
+                <h4>Adams Drop-Leaf Table</h4>
+                <p class="dimensions">26" → 42"W × 36"D × 29"H</p>
+                <p>Walnut. Folds down to 26" width. Secondary workstation or reading nook.</p>
+                <p class="price">~$1,149</p>
+                <a href="https://www.roomandboard.com/catalog/dining/tables/adams-drop-leaf-table" target="_blank">View on Room & Board →</a>
+            </div>
+
+            <div class="card">
+                <span class="tag">Zone 5</span>
+                <h4>Afton Counter Stool × 3</h4>
+                <p class="dimensions">18"W × 23"D × 25"H (seat)</p>
+                <p>Walnut frame, leather seat. Matches Afton side chairs.</p>
+                <p class="price">~$499 ea ($1,497 total)</p>
+                <a href="https://www.roomandboard.com/catalog/dining/counter-bar-stools/afton-counter-stool" target="_blank">View on Room & Board →</a>
+            </div>
+        </div>
+
+        <h2>Budget</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Jasper 86" Sofa</td>
+                    <td>~$3,099</td>
+                </tr>
+                <tr>
+                    <td>Quinn Chair × 3</td>
+                    <td>~$3,897</td>
+                </tr>
+                <tr>
+                    <td>Chilton Coffee Table</td>
+                    <td>~$1,199</td>
+                </tr>
+                <tr>
+                    <td>Hudson 60" Media Cabinet</td>
+                    <td>~$3,499</td>
+                </tr>
+                <tr>
+                    <td>Adams Extension Table 48"→84"</td>
+                    <td>~$2,299</td>
+                </tr>
+                <tr>
+                    <td>Afton Side Chair × 5</td>
+                    <td>~$2,495</td>
+                </tr>
+                <tr>
+                    <td>Adams Drop-Leaf Table</td>
+                    <td>~$1,149</td>
+                </tr>
+                <tr>
+                    <td>Afton Counter Stool × 3</td>
+                    <td>~$1,497</td>
+                </tr>
+                <tr class="total-row">
+                    <td><strong>R&B Subtotal</strong></td>
+                    <td><strong>~$21,134</strong></td>
+                </tr>
+                <tr>
+                    <td>Tax (~8%)</td>
+                    <td>~$1,691</td>
+                </tr>
+                <tr>
+                    <td>Delivery</td>
+                    <td>$159</td>
+                </tr>
+                <tr class="total-row">
+                    <td><strong>R&B Total</strong></td>
+                    <td><strong>~$22,984</strong></td>
+                </tr>
+                <tr>
+                    <td>Additional (paint, lighting, rugs)</td>
+                    <td>$2,100–$5,700</td>
+                </tr>
+                <tr class="total-row">
+                    <td><strong>Grand Total</strong></td>
+                    <td><strong>~$26,884</strong></td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+
+    <footer>
+        <p>215 Aspen Drive · Sun Valley, Idaho · February 2026</p>
+    </footer>
+</body>
+</html>

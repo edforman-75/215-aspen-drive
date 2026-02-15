@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primary Bedroom — Furniture Plan</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: #faf8f5;
+            color: #3a3028;
+            line-height: 1.6;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            background: #3a3028;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            z-index: 100;
+        }
+
+        nav .nav-container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav .brand {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #c1a97b;
+            text-decoration: none;
+        }
+
+        nav .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #faf8f5;
+            text-decoration: none;
+            padding-bottom: 3px;
+            border-bottom: 2px solid transparent;
+        }
+
+        nav a:hover {
+            border-bottom-color: #c1a97b;
+        }
+
+        nav a.active {
+            border-bottom-color: #c1a97b;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        h1 {
+            color: #5c3d2e;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            color: #5c3d2e;
+            font-size: 1.75rem;
+            margin: 2.5rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #c1a97b;
+        }
+
+        h3 {
+            color: #5c3d2e;
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .subtitle {
+            color: #c1a97b;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero {
+            margin-bottom: 3rem;
+        }
+
+        .overview {
+            line-height: 1.7;
+            margin: 2rem 0;
+        }
+
+        .note {
+            background: #fef3e8;
+            border-left: 3px solid #d35400;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 4px;
+        }
+
+        .zone-box {
+            background: #f5f0e8;
+            border-radius: 6px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .zone-box h3 {
+            color: #5c3d2e;
+            margin-bottom: 1rem;
+        }
+
+        .furniture-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid #e8e0d0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .card.staying {
+            border-left: 3px solid #4A7C59;
+        }
+
+        .card .tag {
+            display: inline-block;
+            background: #f5f0e8;
+            color: #5c3d2e;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .card .tag.staying-tag {
+            background: #e8f5e9;
+            color: #4A7C59;
+        }
+
+        .card h4 {
+            color: #5c3d2e;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card .dimensions {
+            color: #c1a97b;
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .card .price {
+            color: #5c3d2e;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin: 1rem 0 0.5rem;
+        }
+
+        .card a {
+            color: #c1a97b;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .card a:hover {
+            text-decoration: underline;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #e8e0d0;
+        }
+
+        thead {
+            background: #f5f0e8;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e8e0d0;
+        }
+
+        th {
+            color: #5c3d2e;
+            font-weight: 600;
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        tbody tr:hover {
+            background: #faf8f5;
+        }
+
+        .total-row {
+            font-weight: 600;
+            background: #f5f0e8 !important;
+        }
+
+        footer {
+            max-width: 900px;
+            margin: 4rem auto 2rem;
+            padding: 2rem;
+            text-align: center;
+            color: #c1a97b;
+            border-top: 1px solid #e8e0d0;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            nav .nav-container {
+                gap: 1rem;
+            }
+
+            nav .nav-links {
+                gap: 1rem;
+            }
+
+            main {
+                padding: 1rem;
+            }
+
+            table {
+                font-size: 0.9rem;
+            }
+
+            th, td {
+                padding: 0.75rem 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="brand">215 Aspen</a>
+            <div class="nav-links">
+                <a href="index.html">Overview</a>
+                <a href="great-room.html">Great Room</a>
+                <a href="bedroom.html" class="active">Bedroom</a>
+                <a href="exterior.html">Exterior</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <h1>Primary Bedroom — Furniture Plan</h1>
+            <p class="subtitle">L-Shaped Room with Alcove · Hudson Collection · Room & Board</p>
+        </section>
+
+        <h2>Project Overview</h2>
+        <div class="overview">
+            <p>L-shaped room: main rectangle ~195" × 170" (16'3" × 14'2") with alcove 98" × 70" (8'2" × 5'10"). Construction raises ceiling from ~7' to ~9'7" (matching great room), removes beam/soffit, enlarges alcove window, replaces carpet with hardwood. All existing pine furniture goes. Wall textiles, Persian/Heriz rugs, Chinese carved chest stay.</p>
+        </div>
+
+        <div class="note">
+            <p><strong>Design Direction:</strong> Continue walnut + performance fabric vocabulary from great room. Hudson collection (built in West Virginia by Caperton) ties to Hudson media cabinet in living room. Quinn chair appears in both rooms. Handmade textiles and antique rugs provide warmth and history.</p>
+        </div>
+
+        <h2>4 Zones</h2>
+
+        <div class="zone-box">
+            <h3>Zone A — Sleep (Long Wall, 172")</h3>
+            <p>King bed centered on 172" wall. ~46" clearance each side for nightstands. Bed faces sliding door — wake up to natural light and trees.</p>
+        </div>
+
+        <div class="zone-box">
+            <h3>Zone B — Storage (Wall-Hanging Wall, 98")</h3>
+            <p>56"W dresser centered on 98" wall, below large Mayan/Central American textile. 21" clearance each side.</p>
+        </div>
+
+        <div class="zone-box">
+            <h3>Zone C — Reading Nook (Alcove, 98" × 70")</h3>
+            <p>Quinn chair angled toward enlarged window. Small side table + ceramic lamp. Built-in shelves above for books. Persian rug underfoot.</p>
+        </div>
+
+        <div class="zone-box">
+            <h3>Zone D — Dumping / Transition</h3>
+            <p>Chinese carved chest (40"W × 20"D × 22"H) at foot of bed. Woven laundry hamper near bathroom opening. Wall hooks near hallway entry.</p>
+        </div>
+
+        <h2>Furniture</h2>
+        <div class="furniture-grid">
+            <div class="card">
+                <span class="tag">Zone A</span>
+                <h4>Hudson Bed — King, Walnut</h4>
+                <p class="dimensions">81"W × 90"D × 48"H</p>
+                <p>Solid walnut frame. No storage (clean lines). Built in West Virginia. Matches nightstands and dresser.</p>
+                <p class="price">~$2,899</p>
+                <a href="https://www.roomandboard.com/catalog/bedroom/beds/hudson-bed" target="_blank">View on Room & Board →</a>
+            </div>
+
+            <div class="card">
+                <span class="tag">Zone A</span>
+                <h4>Hudson Nightstand × 2</h4>
+                <p class="dimensions">20"W × 20"D × 22"H</p>
+                <p>2-drawer walnut. Natural steel pulls. One each side of bed.</p>
+                <p class="price">~$1,199 ea ($2,398 total)</p>
+                <a href="https://www.roomandboard.com/catalog/bedroom/nightstands/hudson-nightstands" target="_blank">View on Room & Board →</a>
+            </div>
+
+            <div class="card">
+                <span class="tag">Zone B</span>
+                <h4>Hudson Dresser 56"</h4>
+                <p class="dimensions">56"W × 20"D × 28"H</p>
+                <p>6-drawer walnut. Natural steel base and pulls. Centered below textile.</p>
+                <p class="price">~$3,399</p>
+                <a href="https://www.roomandboard.com/catalog/bedroom/dressers/hudson-dressers" target="_blank">View on Room & Board →</a>
+            </div>
+
+            <div class="card">
+                <span class="tag">Zone C</span>
+                <h4>Quinn Chair</h4>
+                <p class="dimensions">30"W × 33"D × 32"H</p>
+                <p>Performance fabric, walnut legs. Matches great room Quinn chairs. Swivel base available.</p>
+                <p class="price">~$1,299</p>
+                <a href="https://www.roomandboard.com/catalog/living/chairs/quinn-chair-and-ottoman" target="_blank">View on Room & Board →</a>
+            </div>
+
+            <div class="card">
+                <span class="tag">Zone C</span>
+                <h4>Hudson C-Table / Side Table</h4>
+                <p class="dimensions">14"W × 20"D × 25"H</p>
+                <p>Walnut top, natural steel base. C-shape slides under chair arm. For lamp and books.</p>
+                <p class="price">~$749</p>
+                <a href="https://www.roomandboard.com/catalog/bedroom/nightstands/hudson-c-table-nightstand" target="_blank">View on Room & Board →</a>
+            </div>
+
+            <div class="card">
+                <span class="tag">Zone A (optional)</span>
+                <h4>Corbett Bench 48"</h4>
+                <p class="dimensions">48"W × 16"D × 18"H</p>
+                <p>Walnut, steel base. Optional: at foot of bed for additional seating/storage.</p>
+                <p class="price">~$1,099 (optional)</p>
+                <a href="https://www.roomandboard.com/catalog/living/benches-and-stools/corbett-benches" target="_blank">View on Room & Board →</a>
+            </div>
+        </div>
+
+        <h2>Items Staying</h2>
+        <div class="furniture-grid">
+            <div class="card staying">
+                <span class="tag staying-tag">Staying</span>
+                <h4>Chinese Carved Chest</h4>
+                <p class="dimensions">40"W × 20"D × 22"H</p>
+                <p>Antique carved wood chest. At foot of bed in Zone D for blankets and seasonal items.</p>
+            </div>
+
+            <div class="card staying">
+                <span class="tag staying-tag">Staying</span>
+                <h4>Wall Textiles (5 pieces)</h4>
+                <p>Llama tapestry, Escher-style bird weaving, large Mayan geometric, smaller matching textile, landscape watercolor. Hung throughout room.</p>
+            </div>
+
+            <div class="card staying">
+                <span class="tag staying-tag">Staying</span>
+                <h4>Persian / Heriz Rugs</h4>
+                <p>Antique hand-knotted rugs. One in alcove reading nook (Zone C), additional rugs throughout bedroom.</p>
+            </div>
+        </div>
+
+        <h2>Budget</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Hudson Bed — King, Walnut (no storage)</td>
+                    <td>~$2,899</td>
+                </tr>
+                <tr>
+                    <td>Hudson Nightstand × 2</td>
+                    <td>~$2,398</td>
+                </tr>
+                <tr>
+                    <td>Hudson Dresser 56"</td>
+                    <td>~$3,399</td>
+                </tr>
+                <tr>
+                    <td>Quinn Chair</td>
+                    <td>~$1,299</td>
+                </tr>
+                <tr>
+                    <td>Hudson C-Table / Side Table</td>
+                    <td>~$749</td>
+                </tr>
+                <tr>
+                    <td>Corbett Bench 48" (optional)</td>
+                    <td>(~$1,099)</td>
+                </tr>
+                <tr class="total-row">
+                    <td><strong>R&B Subtotal (without bench)</strong></td>
+                    <td><strong>~$10,744</strong></td>
+                </tr>
+                <tr>
+                    <td>Tax (~8%)</td>
+                    <td>~$860</td>
+                </tr>
+                <tr>
+                    <td>Delivery</td>
+                    <td>$159</td>
+                </tr>
+                <tr class="total-row">
+                    <td><strong>R&B Total</strong></td>
+                    <td><strong>~$11,763</strong></td>
+                </tr>
+                <tr>
+                    <td>Lamps, bedding, window treatments</td>
+                    <td>~$1,500–$3,500</td>
+                </tr>
+                <tr class="total-row">
+                    <td><strong>Bedroom Grand Total</strong></td>
+                    <td><strong>~$13,263–$15,263</strong></td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+
+    <footer>
+        <p>215 Aspen Drive · Sun Valley, Idaho · February 2026</p>
+    </footer>
+</body>
+</html>

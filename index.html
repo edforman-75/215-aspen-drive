@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>215 Aspen Drive — Project Overview</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: #faf8f5;
+            color: #3a3028;
+            line-height: 1.6;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            background: #3a3028;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            z-index: 100;
+        }
+
+        nav .nav-container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav .brand {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #c1a97b;
+            text-decoration: none;
+        }
+
+        nav .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #faf8f5;
+            text-decoration: none;
+            padding-bottom: 3px;
+            border-bottom: 2px solid transparent;
+        }
+
+        nav a:hover {
+            border-bottom-color: #c1a97b;
+        }
+
+        nav a.active {
+            border-bottom-color: #c1a97b;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        h1 {
+            color: #5c3d2e;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            color: #5c3d2e;
+            font-size: 1.75rem;
+            margin: 2.5rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #c1a97b;
+        }
+
+        .subtitle {
+            color: #c1a97b;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero {
+            margin-bottom: 3rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid #e8e0d0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .card h3 {
+            color: #5c3d2e;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .card a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .card p {
+            margin: 0.5rem 0;
+        }
+
+        .card .budget {
+            color: #c1a97b;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        .card .status {
+            display: inline-block;
+            background: #f5f0e8;
+            color: #5c3d2e;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .philosophy {
+            background: #fef3e8;
+            border-left: 3px solid #d35400;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 4px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #e8e0d0;
+        }
+
+        thead {
+            background: #f5f0e8;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e8e0d0;
+        }
+
+        th {
+            color: #5c3d2e;
+            font-weight: 600;
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        tbody tr:hover {
+            background: #faf8f5;
+        }
+
+        footer {
+            max-width: 900px;
+            margin: 4rem auto 2rem;
+            padding: 2rem;
+            text-align: center;
+            color: #c1a97b;
+            border-top: 1px solid #e8e0d0;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            nav .nav-container {
+                gap: 1rem;
+            }
+
+            nav .nav-links {
+                gap: 1rem;
+            }
+
+            main {
+                padding: 1rem;
+            }
+
+            table {
+                font-size: 0.9rem;
+            }
+
+            th, td {
+                padding: 0.75rem 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="brand">215 Aspen</a>
+            <div class="nav-links">
+                <a href="index.html" class="active">Overview</a>
+                <a href="great-room.html">Great Room</a>
+                <a href="bedroom.html">Bedroom</a>
+                <a href="exterior.html">Exterior</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <h1>215 Aspen Drive</h1>
+            <p class="subtitle">Sun Valley (Warm Springs), Idaho · Renovation Projects · February 2026</p>
+            <p>A 1960 midcentury modern home with genuine architectural bones — low-pitch roof, deep overhangs, exposed rafter tails, split-face concrete block. Three coordinated renovation projects bring the house back to its original design intent while updating it for modern comfort.</p>
+        </section>
+
+        <h2>Three Projects</h2>
+        <div class="project-grid">
+            <div class="card">
+                <a href="great-room.html">
+                    <h3>Great Room</h3>
+                    <p>832 sq ft open-plan living/kitchen/dining</p>
+                    <p>Mid-century modern meets warm minimalism</p>
+                    <p>5 zones, 9 Room & Board pieces</p>
+                    <p class="budget">R&B furniture: ~$21,134 | Total: ~$26,884</p>
+                    <span class="status">Planning</span>
+                </a>
+            </div>
+
+            <div class="card">
+                <a href="bedroom.html">
+                    <h3>Primary Bedroom</h3>
+                    <p>L-shaped room with alcove reading nook</p>
+                    <p>Hudson collection (walnut) throughout</p>
+                    <p>Construction: ceiling raised from 7' to 9'7"</p>
+                    <p class="budget">R&B furniture: ~$10,744 | Total: ~$13,263–$15,263</p>
+                    <span class="status">Planning</span>
+                </a>
+            </div>
+
+            <div class="card">
+                <a href="exterior.html">
+                    <h3>Exterior</h3>
+                    <p>Good/Better/Best renovation tiers</p>
+                    <p>Mountain Modern restoration</p>
+                    <p>Budget range: $7K–$55K depending on tier</p>
+                    <p>Stucco, block, windows, railings, deck, doors</p>
+                    <span class="status">Planning</span>
+                </a>
+            </div>
+        </div>
+
+        <h2>Design Philosophy</h2>
+        <div class="philosophy">
+            <p>The same vocabulary runs through all three projects: walnut wood, clean modern lines, honest materials, handmade textiles and antique rugs for warmth. Room & Board furniture (built in the US by craftspeople) is the primary source for interiors. The exterior renovation reveals the architect's 1960 intent rather than hiding it.</p>
+        </div>
+
+        <h2>Combined Budget Summary</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Project</th>
+                    <th>Low</th>
+                    <th>High</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Great Room (furniture + extras)</td>
+                    <td>$24,784</td>
+                    <td>$28,684</td>
+                </tr>
+                <tr>
+                    <td>Primary Bedroom (furniture + extras)</td>
+                    <td>$13,263</td>
+                    <td>$15,263</td>
+                </tr>
+                <tr>
+                    <td>Exterior GOOD</td>
+                    <td>$7,000</td>
+                    <td>$12,000</td>
+                </tr>
+                <tr>
+                    <td>Exterior BETTER</td>
+                    <td>$22,000</td>
+                    <td>$36,000</td>
+                </tr>
+                <tr>
+                    <td>Exterior BEST</td>
+                    <td>$32,000</td>
+                    <td>$55,000</td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+
+    <footer>
+        <p>215 Aspen Drive · Sun Valley, Idaho · February 2026</p>
+    </footer>
+</body>
+</html>
