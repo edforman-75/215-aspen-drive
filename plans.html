@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floor Plans & Elevations — 215 Aspen Drive</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: #faf8f5;
+            color: #3a3028;
+            line-height: 1.6;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            background: #3a3028;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            z-index: 100;
+        }
+
+        nav .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav .brand {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #c1a97b;
+            text-decoration: none;
+        }
+
+        nav .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #faf8f5;
+            text-decoration: none;
+            padding-bottom: 3px;
+            border-bottom: 2px solid transparent;
+        }
+
+        nav a:hover {
+            border-bottom-color: #c1a97b;
+        }
+
+        nav a.active {
+            border-bottom-color: #c1a97b;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        h1 {
+            color: #5c3d2e;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            color: #5c3d2e;
+            font-size: 1.75rem;
+            margin: 2.5rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #c1a97b;
+        }
+
+        h3 {
+            color: #5c3d2e;
+            font-size: 1.25rem;
+            margin: 2rem 0 0.75rem;
+        }
+
+        .subtitle {
+            color: #c1a97b;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero {
+            margin-bottom: 3rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: #fff;
+            border: 1px solid #e8e0d0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .stat-num {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #c1a97b;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #5c3d2e;
+        }
+
+        .plan-frame {
+            background: #fff;
+            border: 2px solid #e8e0d0;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 2rem 0;
+            overflow: hidden;
+        }
+
+        .plan-frame iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+            display: block;
+        }
+
+        .section {
+            margin: 3rem 0;
+        }
+
+        .section p {
+            margin: 1rem 0;
+            line-height: 1.7;
+        }
+
+        .wall-details {
+            background: #f5f0e8;
+            border-radius: 6px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .wall-details h3 {
+            margin-top: 0;
+        }
+
+        .note {
+            background: #fef3e8;
+            border-left: 3px solid #d35400;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 4px;
+        }
+
+        footer {
+            max-width: 1200px;
+            margin: 4rem auto 2rem;
+            padding: 2rem;
+            text-align: center;
+            color: #c1a97b;
+            border-top: 1px solid #e8e0d0;
+        }
+
+        a {
+            color: #c1a97b;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            nav .nav-container {
+                gap: 1rem;
+            }
+
+            nav .nav-links {
+                gap: 1rem;
+            }
+
+            main {
+                padding: 1rem;
+            }
+
+            .plan-frame iframe {
+                height: 600px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            }
+
+            .stat-num {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="brand">215 Aspen</a>
+            <div class="nav-links">
+                <a href="index.html">Overview</a>
+                <a href="great-room.html">Great Room</a>
+                <a href="bedroom.html">Bedroom</a>
+                <a href="exterior.html">Exterior</a>
+                <a href="plans.html" class="active">Plans</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <h1>Floor Plans & Elevations</h1>
+            <p class="subtitle">Confirmed Measurements · Scale: 1.5 px/inch (1"=1'-0" at ~18px/ft)</p>
+        </section>
+
+        <h2>Room Dimensions — Great Room</h2>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-num">32' × 26'</div>
+                <div class="stat-label">Room Size (832 sq ft)</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-num">7'3"</div>
+                <div class="stat-label">Low Ceiling (Kitchen)</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-num">9'7"</div>
+                <div class="stat-label">High Ceiling (TV Wall)</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-num">80"</div>
+                <div class="stat-label">Fireplace Width</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-num">150"</div>
+                <div class="stat-label">Island Length</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-num">42"</div>
+                <div class="stat-label">Stair Width</div>
+            </div>
+        </div>
+
+        <h2>Structural Plan</h2>
+        <p>Full interactive plan with 1-foot grid overlay. Includes floor plan view, four wall elevations (A–D), and four cross-section cuts (A-A through D-D).</p>
+
+        <div class="plan-frame">
+            <iframe src="structural-plan-v3.html" title="Structural Plan"></iframe>
+        </div>
+
+        <p><a href="structural-plan-v3.html" target="_blank">Open full-screen plan →</a></p>
+
+        <h2>Key Immovable Elements</h2>
+
+        <div class="wall-details">
+            <h3>Freestanding Fireplace</h3>
+            <p>80" wide × 41" stone depth + 16" hearth shelf. Opening faces deck wall. Back of stone 7'6" from passage wall. Nearest side 6' from TV wall. Passage on all four sides — the visual heart of the room.</p>
+        </div>
+
+        <div class="wall-details">
+            <h3>Kitchen Island</h3>
+            <p>150" long curved concrete counter with cooktop, framed by two timber posts. Asymmetric shape — 31" straight section at passage end, then curves to 34" apex depth. Inner edge 83" from cabinet wall with 54" passageway.</p>
+        </div>
+
+        <div class="wall-details">
+            <h3>Stair Opening</h3>
+            <p>42" wide × 12.5' long, running along passage wall from TV wall corner. Open rail — no solid wall below chest height.</p>
+        </div>
+
+        <div class="wall-details">
+            <h3>Piano</h3>
+            <p>1918 Steinway Model O (~5'11"). East corner where deck wall meets TV wall, facing Baldy mountain views through windows on two sides.</p>
+        </div>
+
+        <h2>Wall Opening Schedule</h2>
+
+        <div class="wall-details">
+            <h3>TV Wall (32')</h3>
+            <p>42" stair opening → 41" front door → 55" wall (TV mounted) → four 52"×52" windows with 2" gaps (214") → 32" wall (piano corner)</p>
+        </div>
+
+        <div class="wall-details">
+            <h3>Kitchen Cabinet Wall (32')</h3>
+            <p>108" buffet wall → 76" cabinets/fridge → 55" window over sink → 45" cabinets/oven → 75" sliding door (with trim gaps)</p>
+        </div>
+
+        <div class="wall-details">
+            <h3>Bedroom Passage Wall (26')</h3>
+            <p>~130" art wall → 32" passage opening → ~150" wall behind stairs</p>
+        </div>
+
+        <div class="wall-details">
+            <h3>Deck/Piano Wall (26')</h3>
+            <p>38" wall → 76" window → 74" sliding door → 76" window → 38" wall</p>
+        </div>
+
+        <div class="note">
+            <p><strong>Note:</strong> These measurements inform furniture placement in the Great Room plan. The structural plan shows the relationship between ceiling heights, window locations, and key features like the fireplace and island.</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>215 Aspen Drive · Sun Valley, Idaho · February 2026</p>
+    </footer>
+</body>
+</html>
