@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Primary Bedroom — Structural Plan</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Courier New', monospace;
+    background: #faf9f6;
+    color: #222;
+    padding: 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  h1 { font-size: 20px; font-weight: bold; letter-spacing: 1px; margin-bottom: 4px; }
+  .subtitle { font-size: 12px; color: #666; margin-bottom: 32px; }
+  h2 {
+    font-size: 14px; font-weight: bold; letter-spacing: 1px;
+    text-transform: uppercase; margin: 40px 0 12px; color: #444;
+    border-top: 2px solid #222; padding-top: 8px;
+  }
+  .note { font-size: 11px; color: #888; margin: 4px 0 16px; line-height: 1.5; }
+  .plan-wrap {
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 12px 0 32px;
+    overflow-x: auto;
+  }
+  svg text { font-family: 'Courier New', monospace; }
+  .dimension-label { fill: #c1a97b; font-size: 11px; }
+  .wall-label { fill: #5c3d2e; font-size: 10px; font-weight: bold; }
+  .furniture-label { fill: #666; font-size: 9px; font-style: italic; }
+</style>
+</head>
+<body>
+
+<h1>PRIMARY BEDROOM — STRUCTURAL PLAN</h1>
+<p class="subtitle">215 Aspen Drive · L-Shaped Room · Scale: 1.5 px/inch (1"=1'-0" at ~18px/ft)</p>
+
+<!-- ===================== FLOOR PLAN ===================== -->
+<h2>Floor Plan — L-Shaped with Alcove</h2>
+<p class="note">
+  Entry from living room passage (bottom). Main section 172" × 190". Alcove 70" × 70" (upper right).<br>
+  Bed wall (top) = 240" total (170" main + 70" alcove). Entry wall (bottom) = 170" (37"+64"+31"+38").<br>
+  1-ft grid overlay. Scale: 1.5 px/inch.
+</p>
+
+<div class="plan-wrap">
+<svg width="900" height="800" viewBox="0 0 900 800">
+  <defs>
+    <pattern id="grid" width="18" height="18" patternUnits="userSpaceOnUse">
+      <rect width="18" height="18" fill="none" stroke="#e8e0d0" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+
+  <!-- Grid background (1ft = 18px) -->
+  <rect width="900" height="800" fill="url(#grid)"/>
+
+  <!-- Main room outline: 172" wide × 190" deep -->
+  <!-- 172" = 14.33' × 18px/ft = 258px wide -->
+  <!-- 190" = 15.83' × 18px/ft = 285px deep -->
+  <!-- Starting at (100, 100) -->
+
+  <!-- ENTRY WALL (bottom) - 170" = 255px -->
+  <line x1="100" y1="385" x2="100" y2="385" stroke="#3a3028" stroke-width="3"/>
+
+  <!-- Entry wall sections: 37" + 64" + 31" + 38" = 170" -->
+  <!-- 37" = 3.08' × 18 = 55.5px -->
+  <!-- 64" = 5.33' × 18 = 96px (doorway) -->
+  <!-- 31" = 2.58' × 18 = 46.5px -->
+  <!-- 38" = 3.17' × 18 = 57px -->
+
+  <line x1="100" y1="385" x2="155" y1="385" stroke="#3a3028" stroke-width="3"/>
+  <text x="127" y="400" class="wall-label" text-anchor="middle">37"</text>
+
+  <!-- Doorway opening -->
+  <line x1="155" y1="385" x2="251" y1="385" stroke="#c1a97b" stroke-width="2" stroke-dasharray="3,3"/>
+  <text x="203" y="400" class="dimension-label" text-anchor="middle">64" door</text>
+
+  <line x1="251" y1="385" x2="297" y1="385" stroke="#3a3028" stroke-width="3"/>
+  <text x="274" y="400" class="wall-label" text-anchor="middle">31"</text>
+
+  <line x1="297" y1="385" x2="355" y1="385" stroke="#3a3028" stroke-width="3"/>
+  <text x="326" y="400" class="wall-label" text-anchor="middle">38"</text>
+
+  <!-- RIGHT WALL - Dresser wall (98" deep) -->
+  <!-- 98" = 8.17' × 18 = 147px -->
+  <line x1="355" y1="385" x2="355" y2="238" stroke="#3a3028" stroke-width="3"/>
+  <text x="370" y="315" class="wall-label">98" dresser wall</text>
+
+  <!-- ALCOVE outline (70" × 70") -->
+  <!-- 70" = 5.83' × 18 = 105px -->
+  <!-- Alcove starts where dresser wall ends (y=238) and extends right 70" -->
+  <rect x="355" y="100" width="105" height="105" fill="none" stroke="#3a3028" stroke-width="3"/>
+  <text x="407" y="155" class="wall-label" text-anchor="middle">ALCOVE</text>
+  <text x="407" y="170" class="dimension-label" text-anchor="middle">70" × 70"</text>
+
+  <!-- Alcove window (enlarged) -->
+  <rect x="365" y="105" width="40" height="20" fill="none" stroke="#4A7C59" stroke-width="2"/>
+  <text x="385" y="118" class="furniture-label" text-anchor="middle">window</text>
+
+  <!-- BED WALL (top) - 240" total = 360px -->
+  <!-- Main section: 170" = 255px -->
+  <!-- Alcove section: 70" = 105px -->
+  <line x1="100" y1="100" x2="355" y2="100" stroke="#3a3028" stroke-width="3"/>
+  <text x="227" y="90" class="dimension-label" text-anchor="middle">170" main bed wall</text>
+
+  <line x1="355" y1="100" x2="460" y2="100" stroke="#3a3028" stroke-width="3"/>
+  <text x="407" y="90" class="dimension-label" text-anchor="middle">70" alcove</text>
+
+  <!-- LEFT WALL (with sliding glass door) - 172" = 258px -->
+  <line x1="100" y1="100" x2="100" y2="385" stroke="#3a3028" stroke-width="3"/>
+  <text x="85" y="240" class="wall-label" transform="rotate(-90 85 240)">172" width</text>
+
+  <!-- Sliding glass door (approx 76") -->
+  <rect x="95" y="180" width="10" height="114" fill="none" stroke="#4A7C59" stroke-width="2"/>
+  <text x="80" y="240" class="furniture-label" transform="rotate(-90 80 240)">sliding door</text>
+
+  <!-- ROOM DEPTH dimension -->
+  <line x1="370" y1="385" x2="370" y2="100" stroke="#c1a97b" stroke-width="1" stroke-dasharray="2,2"/>
+  <text x="385" y="240" class="dimension-label" transform="rotate(-90 385 240)">190" depth</text>
+
+  <!-- FURNITURE PLACEMENT -->
+
+  <!-- Hudson King Bed (81" × 90") centered on bed wall -->
+  <!-- 81" = 121.5px, 90" = 135px -->
+  <rect x="167" y="115" width="121" height="135" fill="#f5f0e8" stroke="#5c3d2e" stroke-width="2"/>
+  <text x="227" y="185" class="furniture-label" text-anchor="middle">Hudson King Bed</text>
+  <text x="227" y="197" class="furniture-label" text-anchor="middle">81" × 90"</text>
+
+  <!-- Hudson Nightstands (20" × 20") - both sides of bed -->
+  <rect x="140" y="130" width="24" height="24" fill="#f5f0e8" stroke="#5c3d2e" stroke-width="1.5"/>
+  <text x="152" y="145" class="furniture-label" text-anchor="middle" font-size="8px">NS</text>
+
+  <rect x="291" y="130" width="24" height="24" fill="#f5f0e8" stroke="#5c3d2e" stroke-width="1.5"/>
+  <text x="303" y="145" class="furniture-label" text-anchor="middle" font-size="8px">NS</text>
+
+  <!-- Hudson Dresser (56" × 20") on right wall -->
+  <!-- 56" = 84px, 20" = 30px -->
+  <rect x="325" y="280" width="30" height="84" fill="#f5f0e8" stroke="#5c3d2e" stroke-width="2"/>
+  <text x="340" y="318" class="furniture-label" text-anchor="middle" transform="rotate(-90 340 318)">Hudson Dresser 56"</text>
+
+  <!-- Quinn Chair in alcove -->
+  <circle cx="390" cy="145" r="22" fill="#f5f0e8" stroke="#5c3d2e" stroke-width="1.5"/>
+  <text x="390" y="150" class="furniture-label" text-anchor="middle" font-size="8px">Quinn</text>
+  <text x="390" y="160" class="furniture-label" text-anchor="middle" font-size="8px">Chair</text>
+
+  <!-- Chinese Carved Chest at foot of bed -->
+  <rect x="200" y="260" width="30" height="60" fill="#e8f5e9" stroke="#4A7C59" stroke-width="1.5"/>
+  <text x="215" y="293" class="furniture-label" text-anchor="middle" font-size="8px">Carved</text>
+  <text x="215" y="303" class="furniture-label" text-anchor="middle" font-size="8px">Chest</text>
+
+  <!-- Sheetrock panel and opening to closets/bath (left side) -->
+  <line x1="100" y1="200" x2="100" y2="250" stroke="#c1a97b" stroke-width="2" stroke-dasharray="3,3"/>
+  <text x="85" y="225" class="furniture-label" transform="rotate(-90 85 225)">opening</text>
+
+  <!-- Labels for key dimensions -->
+  <text x="227" y="50" class="dimension-label" text-anchor="middle" font-weight="bold">Bed Wall Total: 240" (170" + 70")</text>
+  <text x="227" y="430" class="dimension-label" text-anchor="middle" font-weight="bold">Entry Wall: 170" (37"+64"+31"+38")</text>
+
+</svg>
+</div>
+
+<h2>Key Dimensions</h2>
+<p class="note">
+  <strong>Entry wall:</strong> 170" wide (37" + 64" doorway + 31" + 38")<br>
+  <strong>Room depth:</strong> 190" from entry to bed wall<br>
+  <strong>Main width:</strong> 172" (from right wall to left wall with sliding door)<br>
+  <strong>Bed wall:</strong> 240" total (170" main section + 70" alcove section)<br>
+  <strong>Dresser wall:</strong> 98" deep (then alcove opens)<br>
+  <strong>Alcove:</strong> 70" × 70" reading nook<br>
+  <strong>Ceiling:</strong> Raised from 7' to 9'7" (matching great room)
+</p>
+
+<h2>Furniture Placement</h2>
+<p class="note">
+  <strong>Zone A (Sleep):</strong> Hudson King Bed (81"W) centered on 240" bed wall, Hudson Nightstands on each side<br>
+  <strong>Zone B (Storage):</strong> Hudson Dresser (56"W) centered on 98" dresser wall below textile<br>
+  <strong>Zone C (Reading):</strong> Quinn Chair in 70"×70" alcove, angled toward enlarged window<br>
+  <strong>Zone D (Transition):</strong> Chinese Carved Chest at foot of bed, woven hamper near bath opening
+</p>
+
+</body>
+</html>
