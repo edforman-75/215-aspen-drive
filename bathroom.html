@@ -45,6 +45,58 @@
 
         .subtitle { color: #c1a97b; font-size: 1.1rem; margin-bottom: 1.5rem; }
 
+        p { margin: 0.5rem 0; }
+
+        ul { margin-left: 1.5rem; line-height: 1.9; }
+
+        .tier-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .tier {
+            background: #fff;
+            border: 1px solid #e8e0d0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .tier-header {
+            padding: 1rem 1.25rem;
+        }
+
+        .tier-header .tier-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            opacity: 0.85;
+        }
+
+        .tier-header h3 { margin: 0.25rem 0 0; font-size: 1.1rem; }
+
+        .tier-good .tier-header   { background: #e8f5e9; color: #2d7a3e; }
+        .tier-better .tier-header { background: #fef3e8; color: #d35400; }
+        .tier-best .tier-header   { background: #f5f0e8; color: #5c3d2e; }
+
+        .tier-body { padding: 1.25rem; }
+
+        .tier-price {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #5c3d2e;
+            margin: 0.5rem 0 1rem;
+        }
+
+        .tier-price .tier-price-note {
+            font-size: 0.8rem;
+            font-weight: 400;
+            color: #8a7e78;
+            display: block;
+        }
+
         .callout {
             background: #fef3e8;
             border-left: 3px solid #d35400;
@@ -53,51 +105,8 @@
             margin: 1.5rem 0;
         }
 
-        .callout-good {
-            background: #e8f5e9;
-            border-left-color: #2d7a3e;
-        }
-
-        .callout-required {
-            background: #fde8e8;
-            border-left-color: #c0392b;
-        }
-
-        .option-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .option-card {
-            background: #fff;
-            border: 1px solid #e8e0d0;
-            border-radius: 8px;
-            padding: 1.5rem;
-        }
-
-        .option-card.recommended {
-            border-color: #c1a97b;
-            border-width: 2px;
-        }
-
-        .option-label {
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: #c1a97b;
-            margin-bottom: 0.5rem;
-        }
-
-        .option-card h3 { margin-top: 0; font-size: 1.1rem; }
-
-        .price { font-size: 1.5rem; font-weight: 700; color: #5c3d2e; margin: 0.75rem 0; }
-        .price-note { font-size: 0.85rem; color: #8a7e78; }
-
-        ul { margin-left: 1.5rem; line-height: 1.9; }
-        ul li { margin: 0.2rem 0; }
+        .callout-good { background: #e8f5e9; border-left-color: #2d7a3e; }
+        .callout-note { background: #f5f0e8; border-left-color: #c1a97b; }
 
         table {
             width: 100%;
@@ -119,26 +128,10 @@
         }
 
         th { color: #5c3d2e; font-weight: 600; }
+        td.cost { text-align: right; }
         tbody tr:last-child td { border-bottom: none; }
         tbody tr:hover { background: #faf8f5; }
-
         .total-row { font-weight: 600; background: #f5f0e8 !important; }
-
-        .badge {
-            display: inline-block;
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            padding: 0.2rem 0.6rem;
-            border-radius: 3px;
-            margin-left: 0.5rem;
-            vertical-align: middle;
-        }
-
-        .badge-min { background: #e8f0fe; color: #2856a3; }
-        .badge-rec { background: #fef3e8; color: #d35400; }
-        .badge-alt { background: #e8f5e9; color: #2d7a3e; }
 
         footer {
             max-width: 900px;
@@ -152,7 +145,7 @@
         @media (max-width: 768px) {
             h1 { font-size: 1.75rem; }
             main { padding: 1rem; }
-            .option-grid { grid-template-columns: 1fr; }
+            .tier-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -175,127 +168,135 @@
 
     <main>
         <h1>Primary Bathroom</h1>
-        <p class="subtitle">Three Options · Cosmetic Refresh to Full Cabinet Replacement · $300–$4,400</p>
+        <p class="subtitle">GOOD · BETTER · BEST · $0 to $4,400</p>
 
-        <div class="callout">
-            <strong>The decision structure:</strong> Option A (tile only) can stand alone. Options A+B (tile + full replacement) should be done together if chosen. Option C (reface) is an alternative to doing A+B — similar scope and cost, different approach. You pick one path: A alone, A+B together, or C.
+        <div class="callout-note callout">
+            <strong>The issue:</strong> The existing tile is garish — visually dominant in the wrong direction for the aesthetic we're building. The countertop is dated but functional. Neither is a structural problem. This is purely a cosmetic decision about how much disruption and cost is worth the improvement.
         </div>
 
-        <h2>The Three Options</h2>
+        <h2>Three Tiers</h2>
 
-        <div class="option-grid">
+        <div class="tier-grid">
 
-            <div class="option-card">
-                <div class="option-label">Option 24A — Minimum</div>
-                <h3>Tile Backsplash Only</h3>
-                <div class="price">$300–$800</div>
-                <p class="price-note">Materials + labor. Can DIY for less.</p>
-                <ul style="margin-top:1rem;">
-                    <li>New tile behind sink/vanity area</li>
-                    <li>Keeps existing cabinet and countertop</li>
-                    <li>Cosmetic improvement only</li>
-                    <li>Can be done standalone</li>
-                    <li>Low disruption, fast</li>
-                </ul>
-                <p style="margin-top:1rem; font-size:0.9rem;"><strong>Best if:</strong> Existing cabinet is in good condition and countertop is acceptable. Lowest cost, least disruption.</p>
+            <div class="tier tier-good">
+                <div class="tier-header">
+                    <div class="tier-label">GOOD</div>
+                    <h3>Do Nothing</h3>
+                </div>
+                <div class="tier-body">
+                    <div class="tier-price">$0
+                        <span class="tier-price-note">No cost, no disruption</span>
+                    </div>
+                    <ul>
+                        <li>Accept existing tile as-is</li>
+                        <li>Keep existing countertop</li>
+                        <li>Bathroom is functional</li>
+                        <li>No contractor needed</li>
+                        <li>Zero schedule impact</li>
+                    </ul>
+                    <p style="margin-top:1rem; font-size:0.9rem;"><strong>Best if:</strong> Budget is tight or the bathroom is low priority. The tile is an aesthetic problem, not a functional one. Guests will use it; it won't break.</p>
+                </div>
             </div>
 
-            <div class="option-card recommended">
-                <div class="option-label">Options 24A + 24B — Full Refresh</div>
-                <h3>New Cabinet + Countertop + Tile</h3>
-                <div class="price">$1,800–$4,400</div>
-                <p class="price-note">Do together — same contractor visit</p>
-                <ul style="margin-top:1rem;">
-                    <li>New vanity cabinet (6' run)</li>
-                    <li>New countertop (quartz or granite)</li>
-                    <li>New tile backsplash</li>
-                    <li>Complete visual transformation</li>
-                    <li>Best long-term investment</li>
-                    <li>Schedule with bedroom construction</li>
-                </ul>
-                <p style="margin-top:1rem; font-size:0.9rem;"><strong>Best if:</strong> Existing cabinet is worn or dated. Most complete refresh. Do during bedroom renovation to share contractor mobilization.</p>
+            <div class="tier tier-better">
+                <div class="tier-header">
+                    <div class="tier-label">BETTER</div>
+                    <h3>Replace the Tile</h3>
+                </div>
+                <div class="tier-body">
+                    <div class="tier-price">$300–$800
+                        <span class="tier-price-note">Materials + labor. 1–2 days.</span>
+                    </div>
+                    <ul>
+                        <li>Remove existing garish tile</li>
+                        <li>Install new neutral backsplash tile</li>
+                        <li>Keep existing countertop</li>
+                        <li>Significant visual improvement</li>
+                        <li>Low disruption — tile contractor, 1 day</li>
+                        <li>Can be done independently, any time</li>
+                    </ul>
+                    <p style="margin-top:1rem; font-size:0.9rem;"><strong>Best if:</strong> The tile is the primary visual problem and the countertop is tolerable. Highest impact per dollar spent in the bathroom.</p>
+                </div>
             </div>
 
-            <div class="option-card">
-                <div class="option-label">Option 24C — Alternative to A+B</div>
-                <h3>Reface Cabinets + Countertop + Tile</h3>
-                <div class="price">$1,600–$3,800</div>
-                <p class="price-note">Alternative to doing 24A + 24B</p>
-                <ul style="margin-top:1rem;">
-                    <li>Replace door and drawer fronts only</li>
-                    <li>Keep existing cabinet box (structurally sound)</li>
-                    <li>New countertop (quartz or granite, 6')</li>
-                    <li>New tile backsplash</li>
-                    <li>Similar visual result to full replacement</li>
-                    <li>Less demo, less waste</li>
-                </ul>
-                <p style="margin-top:1rem; font-size:0.9rem;"><strong>Best if:</strong> Existing cabinet box is structurally solid but doors/fronts are worn. Good middle path — avoids full demo cost.</p>
+            <div class="tier tier-best">
+                <div class="tier-header">
+                    <div class="tier-label">BEST</div>
+                    <h3>Tile + Countertop</h3>
+                </div>
+                <div class="tier-body">
+                    <div class="tier-price">$1,800–$4,400
+                        <span class="tier-price-note">Full refresh. Cabinet options below.</span>
+                    </div>
+                    <ul>
+                        <li>Replace garish tile</li>
+                        <li>New countertop (quartz or granite, 6')</li>
+                        <li>Option: replace vanity cabinet outright</li>
+                        <li>Option: reface cabinet doors/fronts only</li>
+                        <li>Complete visual transformation</li>
+                        <li>Coordinate with bedroom construction</li>
+                    </ul>
+                    <p style="margin-top:1rem; font-size:0.9rem;"><strong>Best if:</strong> The countertop is also a problem, or you want a complete refresh. Do during bedroom renovation — contractor already mobilized.</p>
+                </div>
             </div>
 
         </div>
 
-        <h2>Budget Summary</h2>
+        <h2>Budget Detail</h2>
+
         <table>
             <thead>
                 <tr>
-                    <th>Option</th>
+                    <th>Tier</th>
                     <th>Scope</th>
-                    <th>Low</th>
-                    <th>High</th>
+                    <th class="cost">Low</th>
+                    <th class="cost">High</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><strong>24A — Tile only</strong> <span class="badge badge-min">Minimum</span></td>
-                    <td>Backsplash tile only</td>
-                    <td>$300</td>
-                    <td>$800</td>
+                    <td><strong>GOOD</strong> — Do nothing</td>
+                    <td>No work</td>
+                    <td class="cost">$0</td>
+                    <td class="cost">$0</td>
                 </tr>
                 <tr>
-                    <td><strong>24B — Cabinet + countertop</strong></td>
-                    <td>New vanity (6'), new countertop</td>
-                    <td>$1,500</td>
-                    <td>$3,600</td>
-                </tr>
-                <tr class="total-row">
-                    <td><strong>24A + 24B combined</strong> <span class="badge badge-rec">Recommended path</span></td>
-                    <td>Full replacement + tile</td>
-                    <td>$1,800</td>
-                    <td>$4,400</td>
+                    <td><strong>BETTER</strong> — Tile only</td>
+                    <td>Remove existing, install new backsplash tile</td>
+                    <td class="cost">$300</td>
+                    <td class="cost">$800</td>
                 </tr>
                 <tr>
-                    <td><strong>24C — Reface path</strong> <span class="badge badge-alt">Alternative</span></td>
-                    <td>Reface fronts + countertop + tile</td>
-                    <td>$1,600</td>
-                    <td>$3,800</td>
+                    <td><strong>BEST</strong> — Tile + countertop + reface</td>
+                    <td>New tile, new countertop, reface cabinet fronts</td>
+                    <td class="cost">$1,800</td>
+                    <td class="cost">$3,800</td>
+                </tr>
+                <tr>
+                    <td><strong>BEST</strong> — Tile + countertop + full cabinet replace</td>
+                    <td>New tile, new countertop, new vanity cabinet (6')</td>
+                    <td class="cost">$1,800</td>
+                    <td class="cost">$4,400</td>
                 </tr>
             </tbody>
         </table>
 
-        <h2>What Drives the Decision</h2>
-
-        <h3>Condition of existing cabinet</h3>
-        <p>Open the vanity doors and inspect the box construction. If the case is solid (no swelling, no water damage at base), Option C (reface) is viable and saves demo cost. If the box is damaged or very old, full replacement (A+B) makes more sense — you won't want to put new fronts on a deteriorating box.</p>
-
-        <h3>Timing with bedroom renovation</h3>
-        <div class="callout callout-good">
-            <strong>Do the bathroom during bedroom construction.</strong> Your contractor will already be mobilized for the bedroom ceiling/flooring work. Adding bathroom cabinet work to that visit costs far less than a separate mobilization. This is the primary reason to do A+B (or C) rather than defer — the savings from shared mobilization are real.
+        <div class="callout-note callout">
+            <strong>BEST tier cabinet choice:</strong> Within BEST, you can either reface the existing cabinet (replace doors and drawer fronts only, keep the box) or replace it entirely. Reface is cheaper and less disruptive if the cabinet box is structurally sound. Full replacement makes sense if the box is water-damaged or very dated. Inspect before deciding.
         </div>
 
-        <h3>Budget priority</h3>
-        <p>If the bathroom budget is tight, Option A alone ($300-$800) is a legitimate standalone improvement. New tile behind the sink makes a visible difference without touching the cabinet or plumbing. It can be done later, independently, by a tile contractor in a day.</p>
+        <h2>Timing</h2>
 
-        <h2>What Is Not in Scope</h2>
-        <div class="callout callout-required">
-            <strong>None of these options include:</strong> new fixtures (faucet, shower hardware, towel bars), shower tile, toilet replacement, or plumbing relocation. Those are separate projects. The plumbing cluster (cast iron, hose bibs) has already been completed — no plumbing work is required for the bathroom cabinet options above.
+        <div class="callout-good callout">
+            <strong>Do BEST tier during the bedroom renovation.</strong> Your contractor will already be mobilized. Adding bathroom cabinet and tile work to that visit costs significantly less than a separate trip. BETTER tier (tile only) can be done independently at any time — it's a standalone 1-day job that doesn't need to be coordinated with anything else.
         </div>
 
-        <h2>Sequence</h2>
+        <h2>What This Does Not Include</h2>
         <ul>
-            <li>Decide option before bedroom construction starts</li>
-            <li>If doing A+B or C: coordinate with general contractor handling bedroom</li>
-            <li>Tile can be scheduled after cabinet work is complete (1-day job)</li>
-            <li>If doing A only: can be deferred to any point, independent of bedroom timeline</li>
+            <li>New faucet or shower hardware (separate line item if desired)</li>
+            <li>Shower tile replacement (larger scope, not in current plan)</li>
+            <li>Toilet replacement</li>
+            <li>Plumbing relocation — note: plumbing cluster already completed, no plumbing work required for any of these options</li>
         </ul>
 
     </main>
