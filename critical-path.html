@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Critical Path — 215 Aspen Drive</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: #faf8f5;
+            color: #3a3028;
+            line-height: 1.6;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            background: #3a3028;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            z-index: 100;
+        }
+
+        nav .nav-container {
+            max-width: 960px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav .brand {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #c1a97b;
+            text-decoration: none;
+        }
+
+        nav .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #faf8f5;
+            text-decoration: none;
+            padding-bottom: 3px;
+            border-bottom: 2px solid transparent;
+        }
+
+        nav a:hover, nav a.active { border-bottom-color: #c1a97b; }
+
+        main {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        h1 { color: #5c3d2e; font-size: 2.5rem; margin-bottom: 0.5rem; }
+
+        h2 {
+            color: #5c3d2e;
+            font-size: 1.75rem;
+            margin: 2.5rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #c1a97b;
+        }
+
+        h3 { color: #5c3d2e; font-size: 1.2rem; margin: 1.5rem 0 0.75rem; }
+
+        .subtitle { color: #c1a97b; font-size: 1.1rem; margin-bottom: 1.5rem; }
+
+        /* Legend chips */
+        .legend {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 1.5rem 0;
+        }
+
+        .chip {
+            padding: 0.35rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .chip-required   { background: #fde8e8; color: #c0392b; border: 1px solid #c0392b; }
+        .chip-test       { background: #fef3e8; color: #d35400; border: 1px solid #d35400; }
+        .chip-deferrable { background: #e8f5e9; color: #2d7a3e; border: 1px solid #2d7a3e; }
+        .chip-parallel   { background: #e8f0fe; color: #2856a3; border: 1px solid #2856a3; }
+
+        /* Phase blocks */
+        .phase {
+            margin: 2rem 0;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #e8e0d0;
+        }
+
+        .phase-header {
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+        }
+
+        .phase-header h3 { margin: 0; font-size: 1.15rem; }
+        .phase-header .phase-label { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em; opacity: 0.85; }
+
+        .phase-required .phase-header  { background: #fde8e8; color: #c0392b; }
+        .phase-test .phase-header      { background: #fef3e8; color: #d35400; }
+        .phase-decision .phase-header  { background: #f5f0e8; color: #5c3d2e; }
+        .phase-work .phase-header      { background: #e8f0fe; color: #2856a3; }
+        .phase-parallel .phase-header  { background: #e8f5e9; color: #2d7a3e; }
+
+        .phase-body {
+            background: #fff;
+            padding: 1.25rem 1.5rem;
+        }
+
+        .phase-body ul {
+            margin: 0.5rem 0 0 1.5rem;
+            line-height: 1.9;
+        }
+
+        .phase-body li { margin: 0.25rem 0; }
+
+        .phase-body p { margin: 0.5rem 0; }
+
+        /* Arrow between phases */
+        .arrow {
+            text-align: center;
+            font-size: 1.5rem;
+            color: #c1a97b;
+            margin: 0.5rem 0;
+        }
+
+        /* Two-column phase layout for parallel tracks */
+        .parallel-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        /* Decision table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #e8e0d0;
+            font-size: 0.95rem;
+        }
+
+        thead { background: #f5f0e8; }
+
+        th, td {
+            padding: 0.85rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e8e0d0;
+            vertical-align: top;
+        }
+
+        th { color: #5c3d2e; font-weight: 600; }
+        tbody tr:last-child td { border-bottom: none; }
+        tbody tr:hover { background: #faf8f5; }
+
+        .rev-no  { color: #c0392b; font-weight: 600; }
+        .rev-yes { color: #2d7a3e; font-weight: 600; }
+        .rev-costly { color: #d35400; font-weight: 600; }
+
+        .def-no  { color: #c0392b; font-weight: 600; }
+        .def-yes { color: #2d7a3e; font-weight: 600; }
+
+        .callout {
+            background: #fef3e8;
+            border-left: 3px solid #d35400;
+            padding: 1.25rem 1.5rem;
+            border-radius: 4px;
+            margin: 1.5rem 0;
+        }
+
+        .callout-required {
+            background: #fde8e8;
+            border-left-color: #c0392b;
+        }
+
+        .callout-good {
+            background: #e8f5e9;
+            border-left-color: #2d7a3e;
+        }
+
+        footer {
+            max-width: 960px;
+            margin: 4rem auto 2rem;
+            padding: 2rem;
+            text-align: center;
+            color: #c1a97b;
+            border-top: 1px solid #e8e0d0;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 1.75rem; }
+            main { padding: 1rem; }
+            .parallel-grid { grid-template-columns: 1fr; }
+            th, td { padding: 0.65rem 0.5rem; font-size: 0.85rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="brand">215 Aspen</a>
+            <div class="nav-links">
+                <a href="index.html">Overview</a>
+                <a href="great-room.html">Great Room</a>
+                <a href="bedroom.html">Bedroom</a>
+                <a href="exterior.html">Exterior</a>
+                <a href="plans.html">Plans</a>
+                <a href="critical-path.html" class="active">Critical Path</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <h1>Critical Path</h1>
+        <p class="subtitle">Decisions, Sequence, and What Cannot Wait</p>
+
+        <div class="legend">
+            <span class="chip chip-required">Required / Cannot Defer</span>
+            <span class="chip chip-test">Test Required Before Commit</span>
+            <span class="chip chip-deferrable">Deferrable</span>
+            <span class="chip chip-parallel">Can Run in Parallel</span>
+        </div>
+
+        <div class="callout-required callout">
+            <strong>Start here:</strong> The deck structural repair is the trigger for everything on the exterior. It must happen first, and it forces the stucco decision immediately — you will need a stucco contractor on site regardless. Every other exterior decision flows from or alongside this work.
+        </div>
+
+
+        <!-- ============================================================ -->
+        <h2>Exterior Critical Path</h2>
+
+        <!-- PHASE E1 -->
+        <div class="phase phase-required">
+            <div class="phase-header">
+                <span class="phase-label">PHASE E1 — REQUIRED FIRST</span>
+                <h3>Deck Structural Repair</h3>
+            </div>
+            <div class="phase-body">
+                <p>Non-negotiable starting point. Structural integrity before all cosmetic work.</p>
+                <ul>
+                    <li>Engage structural contractor to assess and repair deck framing</li>
+                    <li>This work disturbs adjacent stucco — patching is required on completion</li>
+                    <li><strong>Triggers Phase E2 immediately</strong></li>
+                </ul>
+                <p style="margin-top:1rem;"><strong>Reversibility:</strong> N/A — maintenance, not elective</p>
+                <p><strong>Can defer:</strong> No</p>
+            </div>
+        </div>
+
+        <div class="arrow">↓</div>
+
+        <!-- PHASE E2 -->
+        <div class="phase phase-required">
+            <div class="phase-header">
+                <span class="phase-label">PHASE E2 — REQUIRED, TRIGGERED BY E1</span>
+                <h3>Stucco Repair — and Tier Decision</h3>
+            </div>
+            <div class="phase-body">
+                <p>The deck repair requires stucco patching. A stucco contractor is on site. This is the moment to decide tier:</p>
+                <ul>
+                    <li><strong>GOOD:</strong> Patch damaged area only, repaint to match existing texture</li>
+                    <li><strong>BETTER:</strong> Patch + skim coat entire exterior to smooth finish + repaint</li>
+                    <li><strong>BEST:</strong> Patch + skim coat entire exterior + repaint (same as BETTER at this step)</li>
+                </ul>
+                <div class="callout" style="margin-top:1rem;">
+                    A fresh patch against weathered original stucco will be visible. Doing the full surface while the contractor is mobilized is the logical and economical step. Marginal additional cost over patch-only.
+                </div>
+                <p><strong>Reversibility:</strong> Skim coat to smooth is permanent — cannot restore original texture. Repaint is reversible.</p>
+                <p><strong>Can defer full stucco:</strong> Yes, but patch is not deferrable and mobilization makes full surface the practical choice.</p>
+            </div>
+        </div>
+
+        <div class="arrow">↓ (in parallel with E2)</div>
+
+        <!-- PHASE E3 -->
+        <div class="phase phase-test">
+            <div class="phase-header">
+                <span class="phase-label">PHASE E3 — TESTS BEFORE COMMITMENT</span>
+                <h3>Three Tests That Must Happen Before Major Decisions</h3>
+            </div>
+            <div class="phase-body">
+                <p>Run these tests while structural/stucco work is underway. Results inform the Phase E4 decisions.</p>
+
+                <h3>Test 1: Block Paint Strip — One Wall</h3>
+                <ul>
+                    <li>Strip paint from most visible wall section (minimum 4'×4', ideally full wall)</li>
+                    <li>Use BioBlast chemical strip (Alan Barr, Wood River Valley)</li>
+                    <li>Evaluate: color, uniformity, texture, light at different times of day</li>
+                    <li>Cost: ~$150-$300 | <strong>Required before committing to full strip</strong></li>
+                    <li>If result is poor: repaint to match, stay with BETTER painted block</li>
+                    <li>If result is good: proceed to full BioBlast treatment + clear sealer</li>
+                </ul>
+
+                <h3 style="margin-top:1.25rem;">Test 2: Slider Cladding Paint — One Slider</h3>
+                <ul>
+                    <li>Clean, prime with aluminum bonding primer, paint one slider dark bronze/black</li>
+                    <li>Cost: ~$100-$150 | Observe for 1-2 months before committing to all four</li>
+                    <li>If paint holds: do remaining three sliders (~$400-$800 total)</li>
+                    <li>If paint fails or aesthetics aren't sufficient: replace sliders with Milgard A250</li>
+                </ul>
+
+            </div>
+        </div>
+
+        <div class="arrow">↓</div>
+
+        <!-- PHASE E4 -->
+        <div class="phase phase-decision">
+            <div class="phase-header">
+                <span class="phase-label">PHASE E4 — MAJOR DECISIONS (informed by tests)</span>
+                <h3>Commit to Tier and Scope</h3>
+            </div>
+            <div class="phase-body">
+                <p>With test results in hand, commit to the overall exterior tier and each element decision:</p>
+                <ul>
+                    <li><strong>Block:</strong> Natural concrete (BEST) or painted dark (BETTER)?</li>
+                    <li><strong>Sliders:</strong> Painted cladding (bridge) or new Milgard A250 (BETTER/BEST)?</li>
+                    <li><strong>Windows:</strong> Keep existing (painted frames, GOOD/BETTER) or Milgard A250 or Kolbe VistaLuxe AL (BEST)?</li>
+                    <li><strong>Railings:</strong> Restain balusters (GOOD) or cable rail retrofit (BETTER/BEST)?</li>
+                    <li><strong>Entry doors:</strong> Restain (GOOD) or new Simpson glass panel (BEST)?</li>
+                </ul>
+                <p style="margin-top:1rem;">These decisions can be mixed — you are not locked to one tier across all elements.</p>
+            </div>
+        </div>
+
+        <div class="arrow">↓</div>
+
+        <!-- PHASE E5 -->
+        <div class="phase phase-work">
+            <div class="phase-header">
+                <span class="phase-label">PHASE E5 — CONSTRUCTION</span>
+                <h3>Execute Based on Decisions</h3>
+            </div>
+            <div class="phase-body">
+                <ul>
+                    <li>Full stucco skim coat (if BETTER/BEST) or repaint texture (if GOOD)</li>
+                    <li>Block stripping — full BioBlast treatment (if BEST test was positive)</li>
+                    <li>Slider replacement — Milgard A250 installed (if selected)</li>
+                    <li>Window replacement — Kolbe VistaLuxe AL installed (if selected)</li>
+                    <li>Cable rail retrofit — Feeney CableRail (if selected)</li>
+                    <li>Entry door replacement (if selected)</li>
+                    <li>Deck restain — top surface, underside (spray), beam ends</li>
+                    <li>Paint: stucco, block (if painted), railings, door</li>
+                </ul>
+                <p style="margin-top:1rem;"><em>Windows and sliders can be scheduled independently of stucco/block — different contractors, different timing.</em></p>
+            </div>
+        </div>
+
+
+        <!-- ============================================================ -->
+        <h2>Interior Critical Path</h2>
+
+        <p>The two interior projects (Bedroom and Great Room) run largely in parallel with the exterior and with each other. Bedroom has a structural component that gates furniture; Great Room has no structural work and can proceed at any time.</p>
+
+        <div class="parallel-grid">
+
+            <div>
+                <div class="phase phase-required">
+                    <div class="phase-header">
+                        <span class="phase-label">BEDROOM — PHASE I1</span>
+                        <h3>Structural Construction</h3>
+                    </div>
+                    <div class="phase-body">
+                        <ul>
+                            <li>Ceiling raised from 7' to 9'7"</li>
+                            <li>Beam/soffit removed</li>
+                            <li>Alcove window enlarged</li>
+                            <li>Carpet removed</li>
+                            <li>Hardwood floor installed</li>
+                            <li>PAX closet interiors installed</li>
+                        </ul>
+                        <p style="margin-top:0.75rem;"><strong>Must complete before furniture arrives.</strong></p>
+                        <p><strong>Reversibility:</strong> Ceiling raise and window enlargement irreversible. Floors costly to replace.</p>
+                    </div>
+                </div>
+
+                <div class="arrow">↓</div>
+
+                <div class="phase phase-decision">
+                    <div class="phase-header">
+                        <span class="phase-label">BEDROOM — PHASE I2</span>
+                        <h3>Furniture Selection and Purchase</h3>
+                    </div>
+                    <div class="phase-body">
+                        <p>Five options — can research during construction, decide before floors are complete:</p>
+                        <ul>
+                            <li>Option 1: Room &amp; Board Hudson (6-8 week lead time — order early)</li>
+                            <li>Option 2: Thuma (ships in 2-4 weeks)</li>
+                            <li>Option 3: Vintage 1960s (timeline depends on sourcing)</li>
+                            <li>Option 4: Paul McCobb Planner Group (source from Sweet Modern or dealers)</li>
+                            <li>Option 5: Vintage headboards + steel frame (source headboards, order frame)</li>
+                        </ul>
+                        <p style="margin-top:0.75rem;"><strong>If choosing Hudson: order during construction to align delivery with floor completion.</strong></p>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="phase phase-parallel">
+                    <div class="phase-header">
+                        <span class="phase-label">GREAT ROOM — PHASE I3</span>
+                        <h3>No Structural Work Required</h3>
+                    </div>
+                    <div class="phase-body">
+                        <ul>
+                            <li>No construction gates furniture delivery</li>
+                            <li>Can order Room &amp; Board pieces at any time</li>
+                            <li>Lead time: 6-8 weeks for most R&amp;B pieces</li>
+                            <li>Rugs, lamps, and accessories can proceed independently</li>
+                        </ul>
+                        <p style="margin-top:0.75rem;"><strong>Deferrable to any point. Start whenever budget is ready.</strong></p>
+                    </div>
+                </div>
+
+                <div class="phase phase-parallel" style="margin-top:1.5rem;">
+                    <div class="phase-header">
+                        <span class="phase-label">GREAT ROOM — SWATCH ORDER</span>
+                        <h3>Order Swatches Now</h3>
+                    </div>
+                    <div class="phase-body">
+                        <p>Room &amp; Board fabric and wood swatches are free. Order immediately so they arrive before any purchase decision:</p>
+                        <ul>
+                            <li>Jasper sofa — Sunbrella Canvas Flax</li>
+                            <li>Quinn chair — Performance Velvet Dove</li>
+                            <li>Afton chair — Camel leather</li>
+                            <li>Walnut finish samples from Hudson, Adams pieces</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- ============================================================ -->
+        <h2>Decision Register: Reversibility and Deferability</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Decision</th>
+                    <th>Reversible?</th>
+                    <th>Deferrable?</th>
+                    <th>Gates</th>
+                    <th>When to Decide</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Deck structural repair</strong></td>
+                    <td class="rev-yes">N/A — maintenance</td>
+                    <td class="def-no">No</td>
+                    <td>Everything exterior</td>
+                    <td>Immediately</td>
+                </tr>
+                <tr>
+                    <td><strong>Stucco: full surface vs patch only</strong></td>
+                    <td class="rev-yes">Paint: yes. Skim coat texture: no</td>
+                    <td class="def-no">Patch not deferrable. Full surface is logical extension.</td>
+                    <td>Color palette, tier</td>
+                    <td>At time of deck repair</td>
+                </tr>
+                <tr>
+                    <td><strong>Block paint strip — test area</strong></td>
+                    <td class="rev-costly">Costly to undo</td>
+                    <td class="def-no">No — must precede full strip</td>
+                    <td>Full block stripping decision</td>
+                    <td>Before engaging BioBlast for full strip</td>
+                </tr>
+                <tr>
+                    <td><strong>Block paint strip — full</strong></td>
+                    <td class="rev-no">No — permanent</td>
+                    <td class="def-yes">Yes — test first, then decide</td>
+                    <td>Natural vs painted block aesthetic</td>
+                    <td>After test area result</td>
+                </tr>
+                <tr>
+                    <td><strong>Slider cladding paint</strong></td>
+                    <td class="rev-yes">Yes — can replace sliders later</td>
+                    <td class="def-yes">Yes — good bridge option</td>
+                    <td>Slider replacement decision</td>
+                    <td>Anytime; test one first</td>
+                </tr>
+                <tr>
+                    <td><strong>Slider replacement (Milgard A250)</strong></td>
+                    <td class="rev-costly">Costly — old sliders gone</td>
+                    <td class="def-yes">Yes — paint bridge first</td>
+                    <td>Thermal envelope, aesthetics</td>
+                    <td>After paint bridge test</td>
+                </tr>
+                <tr>
+                    <td><strong>Window replacement (Kolbe VistaLuxe AL)</strong></td>
+                    <td class="rev-costly">Costly — old windows gone</td>
+                    <td class="def-yes">Yes — get quote, then decide tier</td>
+                    <td>Thermal envelope, sightlines, BEST tier</td>
+                    <td>After receiving contractor quote</td>
+                </tr>
+                <tr>
+                    <td><strong>Cable rail</strong></td>
+                    <td class="rev-costly">Costly to reinstall balusters</td>
+                    <td class="def-yes">Yes — restain balusters first</td>
+                    <td>View, aesthetics</td>
+                    <td>Any time after deck repair</td>
+                </tr>
+                <tr>
+                    <td><strong>Entry doors</strong></td>
+                    <td class="rev-costly">Costly to reverse</td>
+                    <td class="def-yes">Yes — restain existing first</td>
+                    <td>Aesthetics, security</td>
+                    <td>Deferrable 1-2 years</td>
+                </tr>
+                <tr>
+                    <td><strong>Bedroom ceiling raise</strong></td>
+                    <td class="rev-no">No — structural</td>
+                    <td class="def-no">No — gates all bedroom work</td>
+                    <td>All bedroom furniture, floors</td>
+                    <td>Immediately with bedroom project</td>
+                </tr>
+                <tr>
+                    <td><strong>Bedroom hardwood floors</strong></td>
+                    <td class="rev-costly">Costly to redo</td>
+                    <td class="def-no">No — must precede furniture</td>
+                    <td>Furniture delivery</td>
+                    <td>During construction phase</td>
+                </tr>
+                <tr>
+                    <td><strong>Bedroom furniture option</strong></td>
+                    <td class="rev-yes">Yes — all options are movable</td>
+                    <td class="def-yes">Yes — decide during construction</td>
+                    <td>Room completion</td>
+                    <td>Before construction ends</td>
+                </tr>
+                <tr>
+                    <td><strong>Great room furniture</strong></td>
+                    <td class="rev-yes">Yes — all movable</td>
+                    <td class="def-yes">Yes — no structural gates</td>
+                    <td>Nothing</td>
+                    <td>Whenever budget is ready</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <!-- ============================================================ -->
+        <h2>Where to Start Right Now</h2>
+
+        <div class="callout-required callout">
+            <strong>1. Engage structural contractor for deck assessment</strong><br>
+            Everything exterior flows from this. Get the scope and timeline before making any other exterior decisions.
+        </div>
+
+        <div class="callout" style="margin-top:1rem;">
+            <strong>2. Run the block paint strip test simultaneously</strong><br>
+            Contact Alan Barr (Wood River Valley) to strip one wall section. This test result is required before you can commit to BEST tier. It costs ~$200 and could save $1,000+ if the result is disappointing.
+        </div>
+
+        <div class="callout" style="margin-top:1rem;">
+            <strong>3. Paint one slider cladding</strong><br>
+            Low-cost, reversible, immediate visual feedback. Tests the dark-frame palette for $100-$150 before committing to $10,000-$16,000 in slider replacement.
+        </div>
+
+        <div class="callout callout-good" style="margin-top:1rem;">
+            <strong>4. Order Room &amp; Board swatches now (free)</strong><br>
+            Swatches take 1-2 weeks to arrive. Order everything — Jasper sofa, Quinn chair, Afton leather, Hudson walnut — so they're on hand when decisions are ready. No commitment required.
+        </div>
+
+        <div class="callout callout-good" style="margin-top:1rem;">
+            <strong>5. Search for vintage furniture while structural work happens</strong><br>
+            Set alerts on 1stDibs for Drexel Declaration, Paul McCobb Planner Group. Contact Sweet Modern about current inventory. Good vintage pieces move quickly — sourcing can start immediately and run in parallel with everything else.
+        </div>
+
+        <div class="callout callout-good" style="margin-top:1rem;">
+            <strong>6. Get a window quote before committing to tier</strong><br>
+            Contact Glass Masters (118 Lewis St, Ketchum, (208) 726-1420) for a Kolbe VistaLuxe AL quote on the 6 upstairs windows. The actual installed price will sharpen the BEST tier decision considerably.
+        </div>
+
+    </main>
+
+    <footer>
+        <p>215 Aspen Drive · Sun Valley, Idaho · February 2026</p>
+    </footer>
+</body>
+</html>

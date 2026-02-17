@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bedroom: Vintage Headboards + Steel Frame — 215 Aspen Drive</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: #faf8f5;
+            color: #3a3028;
+            line-height: 1.6;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            background: #3a3028;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            z-index: 100;
+        }
+
+        nav .nav-container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav .brand {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #c1a97b;
+            text-decoration: none;
+        }
+
+        nav .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #faf8f5;
+            text-decoration: none;
+            padding-bottom: 3px;
+            border-bottom: 2px solid transparent;
+        }
+
+        nav a:hover {
+            border-bottom-color: #c1a97b;
+        }
+
+        nav a.active {
+            border-bottom-color: #c1a97b;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        h1 {
+            color: #5c3d2e;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            color: #5c3d2e;
+            font-size: 1.75rem;
+            margin: 2.5rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #c1a97b;
+        }
+
+        h3 {
+            color: #5c3d2e;
+            font-size: 1.3rem;
+            margin: 2rem 0 1rem;
+        }
+
+        .subtitle {
+            color: #c1a97b;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight {
+            background: #e8f5e9;
+            border-left: 3px solid #2d7a3e;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 4px;
+        }
+
+        .warning {
+            background: #fff3e0;
+            border-left: 3px solid #d35400;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 4px;
+        }
+
+        .budget {
+            background: #f5f0e8;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .budget h3 {
+            margin-top: 0;
+        }
+
+        ul {
+            margin: 1rem 0 1rem 2rem;
+            line-height: 1.8;
+        }
+
+        li {
+            margin: 0.5rem 0;
+        }
+
+        a {
+            color: #c1a97b;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #e8e0d0;
+        }
+
+        thead {
+            background: #f5f0e8;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e8e0d0;
+        }
+
+        th {
+            color: #5c3d2e;
+            font-weight: 600;
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        tbody tr:hover {
+            background: #faf8f5;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .comparison-card {
+            background: #fff;
+            border: 1px solid #e8e0d0;
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .comparison-card h4 {
+            color: #5c3d2e;
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            max-width: 900px;
+            margin: 4rem auto 2rem;
+            padding: 2rem;
+            text-align: center;
+            color: #c1a97b;
+            border-top: 1px solid #e8e0d0;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            main {
+                padding: 1rem;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="brand">215 Aspen</a>
+            <div class="nav-links">
+                <a href="index.html">Overview</a>
+                <a href="great-room.html">Great Room</a>
+                <a href="bedroom.html" class="active">Bedroom</a>
+                <a href="exterior.html">Exterior</a>
+                <a href="plans.html">Plans</a>
+                <a href="critical-path.html">Critical Path</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <h1>Option 5: Vintage Headboards + Steel Frame</h1>
+        <p class="subtitle">Best of Both Worlds: 1960s Aesthetic + 2026 Engineering</p>
+
+        <div class="highlight">
+            <p><strong>The Concept:</strong> Use vintage twin headboards for authentic mid-century style, but mount them to a modern steel king bed frame for structural support. The vintage pieces become decorative elements while a commercial-grade steel frame provides zero-creaking stability.</p>
+            <p style="margin-top: 1rem;"><strong>Result:</strong> Authentic 1960s aesthetic + modern stability + lowest cost option + easiest maintenance</p>
+        </div>
+
+        <h2>How It Works</h2>
+
+        <h3>The Structure</h3>
+        <ul>
+            <li><strong>Steel King Frame:</strong> Modern platform-style frame with center support beam provides all structural support (~$150-300)</li>
+            <li><strong>Vintage Twin Headboards:</strong> Two matching 1960s headboards mounted side-by-side to the steel frame using standard brackets</li>
+            <li><strong>Decorative Side Rails:</strong> Optional - vintage rails can be displayed alongside bed (non-structural)</li>
+            <li><strong>Footboard:</strong> Skip it - usually hidden by bedding anyway</li>
+        </ul>
+
+        <h3>Why This Works</h3>
+        <p>Headboards and footboards are <em>already</em> decorative, not structural, on virtually all beds - even brand new ones. The side rails and support system carry the weight. This approach simply separates form (vintage) from function (modern):</p>
+        <ul>
+            <li><strong>Steel frame:</strong> Function (structure, support, zero creaking, center beam)</li>
+            <li><strong>Vintage headboards:</strong> Form (aesthetic, character, authentic period detail)</li>
+        </ul>
+
+        <h2>Steel Frame Recommendations</h2>
+
+        <p>Look for basic platform-style king frames with these features:</p>
+        <ul>
+            <li>Headboard mounting brackets (standard holes at multiple heights)</li>
+            <li>Center support beam included</li>
+            <li>Adjustable width 76"-78"</li>
+            <li>Height-adjustable legs (to match vintage rail height)</li>
+        </ul>
+
+        <p><strong>Recommended models:</strong></p>
+        <ul>
+            <li><a href="https://www.amazon.com/Zinus-Compack-Adjustable-Support-Foundation/dp/B00BWF3K7G" target="_blank">Zinus Compack Bed Frame</a> - $180, adjustable height, headboard brackets</li>
+            <li><a href="https://www.amazon.com/Mantua-Insta-Lock-Bed-Frame/dp/B000EYSN0K" target="_blank">Mantua Insta-Lock</a> - $220, heavy-duty construction, quiet</li>
+            <li><a href="https://www.amazon.com/Kings-Brand-Furniture-Adjustable-Foundation/dp/B01LYWHK4E" target="_blank">Kings Brand Metal Platform</a> - $150-200, basic but solid</li>
+        </ul>
+
+        <h2>Vintage Headboard Selection</h2>
+
+        <p>Same vintage makers as the pure vintage option, but now you only need the headboards (and optionally nightstands/dresser):</p>
+
+        <ul>
+            <li><strong>Drexel Declaration by Kipp Stewart:</strong> Walnut with sculpted profiles, 1960s classic</li>
+            <li><strong>Broyhill Brasilia:</strong> Curved headboards, dramatic grain matching</li>
+            <li><strong>Lane Rhythm:</strong> Clean lines, quality walnut construction</li>
+            <li><strong>American of Martinsville:</strong> Mid-range vintage, good value</li>
+            <li><strong>Bassett:</strong> Affordable entry point, still solid walnut</li>
+        </ul>
+
+        <p><strong>What to look for:</strong></p>
+        <ul>
+            <li>Two matching twin headboards in good condition</li>
+            <li>Original mounting hardware (or note dimensions for adapter plates)</li>
+            <li>Minimal veneer damage (easy to refinish if needed)</li>
+            <li>Don't worry about the condition of side rails/footboard - you won't use them structurally</li>
+        </ul>
+
+        <p><strong>Where to find:</strong> <a href="https://sweetmodern.com" target="_blank">Sweet Modern</a>, <a href="https://www.1stdibs.com" target="_blank">1stDibs</a>, <a href="https://www.chairish.com" target="_blank">Chairish</a>, <a href="https://modernhill.com" target="_blank">Modern Hill</a>, local mid-century dealers</p>
+
+        <h2>Assembly Process</h2>
+
+        <ol style="margin: 1.5rem 0 1.5rem 2rem; line-height: 1.8;">
+            <li>Assemble steel king frame per manufacturer instructions</li>
+            <li>Position vintage headboards against steel frame's headboard mounting brackets</li>
+            <li>Use standard headboard bolts to attach both headboards to frame (use wood adapter plates if vintage hardware doesn't align with modern brackets)</li>
+            <li>Adjust leg height to match vintage rail height if needed</li>
+            <li>Add mattress and bedding - vintage rails can be displayed decoratively alongside if desired</li>
+        </ol>
+
+        <div class="warning">
+            <p><strong>Height Matching:</strong> Vintage twin rails typically sit 6-8" from floor. Most adjustable steel frames accommodate 6-14" height range. You can match the vintage aesthetic while getting modern support.</p>
+        </div>
+
+        <h2>Budget Breakdown</h2>
+
+        <div class="budget">
+            <h3>Total Investment: $2,350 - $3,800</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Low</th>
+                        <th>High</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Two vintage twin headboards (pair)</td>
+                        <td>$400</td>
+                        <td>$800</td>
+                    </tr>
+                    <tr>
+                        <td>Steel king bed frame</td>
+                        <td>$150</td>
+                        <td>$300</td>
+                    </tr>
+                    <tr>
+                        <td>Mounting hardware/adapters</td>
+                        <td>$50</td>
+                        <td>$100</td>
+                    </tr>
+                    <tr>
+                        <td>Vintage nightstands (pair)</td>
+                        <td>$600</td>
+                        <td>$1,000</td>
+                    </tr>
+                    <tr>
+                        <td>Vintage dresser</td>
+                        <td>$800</td>
+                        <td>$1,200</td>
+                    </tr>
+                    <tr>
+                        <td>Headboard refinishing (if needed)</td>
+                        <td>$200</td>
+                        <td>$400</td>
+                    </tr>
+                    <tr>
+                        <td>Delivery/assembly</td>
+                        <td>$150</td>
+                        <td>$200</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p style="margin-top: 1.5rem; color: #2d7a3e; font-weight: 600;">Total Savings vs Room & Board Hudson: $7,400 - $8,850 (66-79% savings)</p>
+            <p style="color: #2d7a3e; font-weight: 600;">Total Savings vs Pure Vintage Conversion: $2,450 - $2,900 (51-76% savings)</p>
+        </div>
+
+        <h2>Advantages Over Other Options</h2>
+
+        <div class="comparison-grid">
+            <div class="comparison-card">
+                <h4>vs Pure Vintage Conversion</h4>
+                <ul style="margin-left: 1.5rem; font-size: 0.95rem;">
+                    <li>Zero creaking (steel doesn't develop joint noise)</li>
+                    <li>No gap down middle (unified king frame)</li>
+                    <li>No need to restore vintage joinery ($800-1,200 saved)</li>
+                    <li>Modern center support beam</li>
+                    <li>$2,450-2,900 cheaper</li>
+                </ul>
+            </div>
+
+            <div class="comparison-card">
+                <h4>vs Thuma</h4>
+                <ul style="margin-left: 1.5rem; font-size: 0.95rem;">
+                    <li>Authentic 1960s walnut (not stained rubberwood)</li>
+                    <li>Matches period of the house</li>
+                    <li>Unique character pieces</li>
+                    <li>$3,400-4,000 cheaper</li>
+                    <li>Similar stability/no-creak performance</li>
+                </ul>
+            </div>
+
+            <div class="comparison-card">
+                <h4>vs Room & Board Hudson</h4>
+                <ul style="margin-left: 1.5rem; font-size: 0.95rem;">
+                    <li>66-79% cost savings</li>
+                    <li>Authentic vintage aesthetic (not reproduction)</li>
+                    <li>Sustainable reuse of quality furniture</li>
+                    <li>Steel frame = comparable stability</li>
+                    <li>Can upgrade to R&B later, keep nightstands/dresser</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>Potential Challenges</h2>
+
+        <h3>Width Coordination</h3>
+        <ul>
+            <li>Two twin headboards side-by-side = 78" total width</li>
+            <li>King mattress = 76" wide</li>
+            <li>Small gap on each side (½"-1") is normal and visually fine</li>
+            <li>Headboards create visual backdrop wider than mattress - this is traditional and expected</li>
+        </ul>
+
+        <h3>Visual Integration</h3>
+        <ul>
+            <li>Steel frame legs may be visible (pushed back, partially hidden by bed skirt)</li>
+            <li>Can paint steel frame to blend with vintage wood tones</li>
+            <li>Headboards mounted flush to steel frame look intentional, not cobbled together</li>
+            <li>This is actually how hotels and museums repurpose vintage headboards</li>
+        </ul>
+
+        <h3>Mounting Hardware</h3>
+        <ul>
+            <li>Most vintage beds used standard bed rail hardware (hooks/slots)</li>
+            <li>Modern steel frames use bolt-through brackets</li>
+            <li>Simple wood adapter plates bridge the two systems (~$20 at hardware store)</li>
+            <li>Alternative: drill new holes in vintage headboard posts (if solid wood posts)</li>
+        </ul>
+
+        <h2>Long-Term Performance</h2>
+
+        <p><strong>Expected lifespan:</strong></p>
+        <ul>
+            <li>Steel frame: 15-20 years of daily use with zero maintenance</li>
+            <li>Vintage headboards: Indefinite (they're just decorative panels, no wear)</li>
+            <li>Total system: 15-20 years before steel frame replacement needed (headboards last forever)</li>
+        </ul>
+
+        <p><strong>Noise/creaking:</strong> None. Steel frames don't creak. Wood headboards aren't load-bearing so joints don't stress.</p>
+
+        <p><strong>Maintenance:</strong> None. No joint tightening, no re-gluing, no adjustments needed.</p>
+
+        <h2>Why This Is the Smartest Option</h2>
+
+        <div class="highlight">
+            <p>This approach recognizes that vintage furniture's value is in its <strong>design and craftsmanship</strong>, not necessarily its 1960s engineering. The headboards showcase authentic mid-century design - sculpted walnut profiles, grain-matched veneers, period-correct proportions. That's what you see and what matters aesthetically.</p>
+
+            <p style="margin-top: 1rem;">The bed frame's job is to be invisible and silent while supporting weight. Modern steel engineering does this better than 65-year-old wood joints. You're not "cheating" - you're being smart about what each component does best.</p>
+
+            <p style="margin-top: 1rem;"><strong>Result:</strong> Lowest cost + authentic aesthetic + best reliability + easiest maintenance = genuinely the best option for a rental/secondary home.</p>
+        </div>
+
+        <h2>Recommended for 215 Aspen Because:</h2>
+
+        <ul>
+            <li><strong>Rental property:</strong> Modern steel = reliable, no maintenance calls about squeaky beds</li>
+            <li><strong>Authentic period:</strong> 1960s headboards match 1960 house perfectly</li>
+            <li><strong>Budget conscious:</strong> 66-79% savings vs new high-end furniture</li>
+            <li><strong>Sustainable:</strong> Reuses quality vintage pieces, prevents landfill waste</li>
+            <li><strong>Reversible:</strong> Can upgrade to R&B Hudson later, keep the vintage nightstands/dresser</li>
+            <li><strong>No compromises:</strong> Get stability AND style, not one or the other</li>
+        </ul>
+
+        <p style="margin-top: 2rem;"><a href="bedroom.html">← Back to All Bedroom Options</a></p>
+    </main>
+
+    <footer>
+        <p>215 Aspen Drive · Sun Valley, Idaho · February 2026</p>
+    </footer>
+</body>
+</html>
