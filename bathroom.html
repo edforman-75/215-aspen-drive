@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primary Bathroom — 215 Aspen Drive</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: #faf8f5;
+            color: #3a3028;
+            line-height: 1.6;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            background: #3a3028;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            z-index: 100;
+        }
+
+        nav .nav-container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav .brand { font-size: 1.25rem; font-weight: 600; color: #c1a97b; text-decoration: none; }
+        nav .nav-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+        nav a { color: #faf8f5; text-decoration: none; padding-bottom: 3px; border-bottom: 2px solid transparent; }
+        nav a:hover, nav a.active { border-bottom-color: #c1a97b; }
+
+        main { max-width: 900px; margin: 0 auto; padding: 2rem; }
+
+        h1 { color: #5c3d2e; font-size: 2.5rem; margin-bottom: 0.5rem; }
+        h2 { color: #5c3d2e; font-size: 1.75rem; margin: 2.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #c1a97b; }
+        h3 { color: #5c3d2e; font-size: 1.2rem; margin: 1.5rem 0 0.75rem; }
+
+        .subtitle { color: #c1a97b; font-size: 1.1rem; margin-bottom: 1.5rem; }
+
+        .callout {
+            background: #fef3e8;
+            border-left: 3px solid #d35400;
+            padding: 1.25rem 1.5rem;
+            border-radius: 4px;
+            margin: 1.5rem 0;
+        }
+
+        .callout-good {
+            background: #e8f5e9;
+            border-left-color: #2d7a3e;
+        }
+
+        .callout-required {
+            background: #fde8e8;
+            border-left-color: #c0392b;
+        }
+
+        .option-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .option-card {
+            background: #fff;
+            border: 1px solid #e8e0d0;
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .option-card.recommended {
+            border-color: #c1a97b;
+            border-width: 2px;
+        }
+
+        .option-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #c1a97b;
+            margin-bottom: 0.5rem;
+        }
+
+        .option-card h3 { margin-top: 0; font-size: 1.1rem; }
+
+        .price { font-size: 1.5rem; font-weight: 700; color: #5c3d2e; margin: 0.75rem 0; }
+        .price-note { font-size: 0.85rem; color: #8a7e78; }
+
+        ul { margin-left: 1.5rem; line-height: 1.9; }
+        ul li { margin: 0.2rem 0; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #e8e0d0;
+        }
+
+        thead { background: #f5f0e8; }
+
+        th, td {
+            padding: 0.85rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e8e0d0;
+            vertical-align: top;
+        }
+
+        th { color: #5c3d2e; font-weight: 600; }
+        tbody tr:last-child td { border-bottom: none; }
+        tbody tr:hover { background: #faf8f5; }
+
+        .total-row { font-weight: 600; background: #f5f0e8 !important; }
+
+        .badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            padding: 0.2rem 0.6rem;
+            border-radius: 3px;
+            margin-left: 0.5rem;
+            vertical-align: middle;
+        }
+
+        .badge-min { background: #e8f0fe; color: #2856a3; }
+        .badge-rec { background: #fef3e8; color: #d35400; }
+        .badge-alt { background: #e8f5e9; color: #2d7a3e; }
+
+        footer {
+            max-width: 900px;
+            margin: 4rem auto 2rem;
+            padding: 2rem;
+            text-align: center;
+            color: #c1a97b;
+            border-top: 1px solid #e8e0d0;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 1.75rem; }
+            main { padding: 1rem; }
+            .option-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="brand">215 Aspen</a>
+            <div class="nav-links">
+                <a href="index.html">Overview</a>
+                <a href="bedroom.html">Bedroom</a>
+                <a href="bathroom.html" class="active">Bathroom</a>
+                <a href="great-room.html">Great Room</a>
+                <a href="exterior.html">Exterior</a>
+                <a href="other.html">Other Work</a>
+                <a href="plans.html">Plans</a>
+                <a href="critical-path.html">Critical Path</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <h1>Primary Bathroom</h1>
+        <p class="subtitle">Three Options · Cosmetic Refresh to Full Cabinet Replacement · $300–$4,400</p>
+
+        <div class="callout">
+            <strong>The decision structure:</strong> Option A (tile only) can stand alone. Options A+B (tile + full replacement) should be done together if chosen. Option C (reface) is an alternative to doing A+B — similar scope and cost, different approach. You pick one path: A alone, A+B together, or C.
+        </div>
+
+        <h2>The Three Options</h2>
+
+        <div class="option-grid">
+
+            <div class="option-card">
+                <div class="option-label">Option 24A — Minimum</div>
+                <h3>Tile Backsplash Only</h3>
+                <div class="price">$300–$800</div>
+                <p class="price-note">Materials + labor. Can DIY for less.</p>
+                <ul style="margin-top:1rem;">
+                    <li>New tile behind sink/vanity area</li>
+                    <li>Keeps existing cabinet and countertop</li>
+                    <li>Cosmetic improvement only</li>
+                    <li>Can be done standalone</li>
+                    <li>Low disruption, fast</li>
+                </ul>
+                <p style="margin-top:1rem; font-size:0.9rem;"><strong>Best if:</strong> Existing cabinet is in good condition and countertop is acceptable. Lowest cost, least disruption.</p>
+            </div>
+
+            <div class="option-card recommended">
+                <div class="option-label">Options 24A + 24B — Full Refresh</div>
+                <h3>New Cabinet + Countertop + Tile</h3>
+                <div class="price">$1,800–$4,400</div>
+                <p class="price-note">Do together — same contractor visit</p>
+                <ul style="margin-top:1rem;">
+                    <li>New vanity cabinet (6' run)</li>
+                    <li>New countertop (quartz or granite)</li>
+                    <li>New tile backsplash</li>
+                    <li>Complete visual transformation</li>
+                    <li>Best long-term investment</li>
+                    <li>Schedule with bedroom construction</li>
+                </ul>
+                <p style="margin-top:1rem; font-size:0.9rem;"><strong>Best if:</strong> Existing cabinet is worn or dated. Most complete refresh. Do during bedroom renovation to share contractor mobilization.</p>
+            </div>
+
+            <div class="option-card">
+                <div class="option-label">Option 24C — Alternative to A+B</div>
+                <h3>Reface Cabinets + Countertop + Tile</h3>
+                <div class="price">$1,600–$3,800</div>
+                <p class="price-note">Alternative to doing 24A + 24B</p>
+                <ul style="margin-top:1rem;">
+                    <li>Replace door and drawer fronts only</li>
+                    <li>Keep existing cabinet box (structurally sound)</li>
+                    <li>New countertop (quartz or granite, 6')</li>
+                    <li>New tile backsplash</li>
+                    <li>Similar visual result to full replacement</li>
+                    <li>Less demo, less waste</li>
+                </ul>
+                <p style="margin-top:1rem; font-size:0.9rem;"><strong>Best if:</strong> Existing cabinet box is structurally solid but doors/fronts are worn. Good middle path — avoids full demo cost.</p>
+            </div>
+
+        </div>
+
+        <h2>Budget Summary</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Option</th>
+                    <th>Scope</th>
+                    <th>Low</th>
+                    <th>High</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>24A — Tile only</strong> <span class="badge badge-min">Minimum</span></td>
+                    <td>Backsplash tile only</td>
+                    <td>$300</td>
+                    <td>$800</td>
+                </tr>
+                <tr>
+                    <td><strong>24B — Cabinet + countertop</strong></td>
+                    <td>New vanity (6'), new countertop</td>
+                    <td>$1,500</td>
+                    <td>$3,600</td>
+                </tr>
+                <tr class="total-row">
+                    <td><strong>24A + 24B combined</strong> <span class="badge badge-rec">Recommended path</span></td>
+                    <td>Full replacement + tile</td>
+                    <td>$1,800</td>
+                    <td>$4,400</td>
+                </tr>
+                <tr>
+                    <td><strong>24C — Reface path</strong> <span class="badge badge-alt">Alternative</span></td>
+                    <td>Reface fronts + countertop + tile</td>
+                    <td>$1,600</td>
+                    <td>$3,800</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>What Drives the Decision</h2>
+
+        <h3>Condition of existing cabinet</h3>
+        <p>Open the vanity doors and inspect the box construction. If the case is solid (no swelling, no water damage at base), Option C (reface) is viable and saves demo cost. If the box is damaged or very old, full replacement (A+B) makes more sense — you won't want to put new fronts on a deteriorating box.</p>
+
+        <h3>Timing with bedroom renovation</h3>
+        <div class="callout callout-good">
+            <strong>Do the bathroom during bedroom construction.</strong> Your contractor will already be mobilized for the bedroom ceiling/flooring work. Adding bathroom cabinet work to that visit costs far less than a separate mobilization. This is the primary reason to do A+B (or C) rather than defer — the savings from shared mobilization are real.
+        </div>
+
+        <h3>Budget priority</h3>
+        <p>If the bathroom budget is tight, Option A alone ($300-$800) is a legitimate standalone improvement. New tile behind the sink makes a visible difference without touching the cabinet or plumbing. It can be done later, independently, by a tile contractor in a day.</p>
+
+        <h2>What Is Not in Scope</h2>
+        <div class="callout callout-required">
+            <strong>None of these options include:</strong> new fixtures (faucet, shower hardware, towel bars), shower tile, toilet replacement, or plumbing relocation. Those are separate projects. The plumbing cluster (cast iron, hose bibs) has already been completed — no plumbing work is required for the bathroom cabinet options above.
+        </div>
+
+        <h2>Sequence</h2>
+        <ul>
+            <li>Decide option before bedroom construction starts</li>
+            <li>If doing A+B or C: coordinate with general contractor handling bedroom</li>
+            <li>Tile can be scheduled after cabinet work is complete (1-day job)</li>
+            <li>If doing A only: can be deferred to any point, independent of bedroom timeline</li>
+        </ul>
+
+    </main>
+
+    <footer>
+        <p>215 Aspen Drive · Sun Valley, Idaho · February 2026</p>
+    </footer>
+</body>
+</html>
